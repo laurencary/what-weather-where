@@ -33,7 +33,7 @@ This project will be implemented with the following technologies:
 
 ## Implementation Timeline
 
-* __Friday__: Set up fetches for the weather & daylight APIs. Understand the data, figure out how to access the appropriate fields. Get comfortable with Danfo.js. Get a chart setup for average daily highs for a single zip code.
+* __Thursday Afternoon & Friday__: Set up fetches for the weather & daylight APIs. Understand the data, figure out how to access the appropriate fields. Get comfortable with Danfo.js. Get a chart setup for average daily highs for a single zip code.
 
 * __Weekend__: Add functionality to add/change locations. Get comfortable aggregating and calculating metrics by different time periods and units. Finalize chart types and combinations for the metrics.
 
