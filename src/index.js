@@ -1,4 +1,4 @@
-import { DATA } from "./scripts/data"
+import { DATA } from "./scripts/dataManipulation"
 import Chart from 'chart.js/auto'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,17 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type: 'line',
                 data: {
-                    labels: data["weather"]["daily"]["time"],
+                    labels: data["weather"]["time"],
                     datasets: [
                         {
                             label: 'Min',
                             // backgroundColor: "#4787b5",
-                            data: data["weather"]["daily"]["temperature_2m_min"]
+                            data: data["weather"]["temperature_2m_min"]
                         },
                         {
                             label: 'Max',
                             fill: '-1',
-                            data: data["weather"]["daily"]["temperature_2m_max"]
+                            data: data["weather"]["temperature_2m_max"]
                         }
                     ]
                 }
@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type: 'bar',
                 data: {
-                    labels: data["weather"]["daily"]["time"],
+                    labels: data["weather"]["time"],
                     datasets: [
                         {
                             label: '(mm)',
-                            data: data["weather"]["daily"]["precipitation_sum"]
+                            data: data["weather"]["precipitation_sum"]
                         },
                     ]
                 }
@@ -67,15 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type: 'line',
                 data: {
-                    labels: data["weather"]["daily"]["time"],
+                    labels: data["weather"]["time"],
                     datasets: [
                         {
                             label: 'sunrise',
-                            data: data["weather"]["daily"]["sunrise"]
+                            data: data["weather"]["sunrise"]
                         },
                         {
                             label: 'sunset',
-                            data: data["weather"]["daily"]["sunset"]
+                            data: data["weather"]["sunset"]
                         }
                     ]
                 }
@@ -86,11 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 type: 'bar',
                 data: {
-                    labels: data["weather"]["daily"]["time"],
+                    labels: data["weather"]["time"],
                     datasets: [
                         {
                             label: 'daylight',
-                            data: data["weather"]["daily"]["daylight"]
+                            data: data["weather"]["daylight"]
                         }
                     ]
                 }
