@@ -2,42 +2,71 @@ import { DATA } from "./scripts/data"
 import Chart from 'chart.js/auto'
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("its working");
-
     const options = {
         zipCode: "94301",
         startDate: "2023-05-06",
         endDate: "2023-05-20"
     };
 
-    DATA.getWeatherData(options);
-
+    
     (async function () {
-        const data = [
-            { year: 2010, count: 10 },
-            { year: 2011, count: 20 },
-            { year: 2012, count: 15 },
-            { year: 2013, count: 25 },
-            { year: 2014, count: 22 },
-            { year: 2015, count: 30 },
-            { year: 2016, count: 28 },
-        ];
+        const data = await DATA.getWeatherData(options);
+
 
         new Chart(
             document.getElementById('temp-chart'),
             {
-                type: 'bar',
+                type: 'line',
                 data: {
-                    labels: data.map(row => row.year),
+                    labels: data["weather"]["daily"]["time"],
                     datasets: [
                         {
-                            label: 'Acquisitions by year',
-                            data: data.map(row => row.count)
+                            label: 'Min',
+                            // backgroundColor: "white",
+                            data: data["weather"]["daily"]["temperature_2m_min"]
+                        },
+                        {
+                            label: 'Max',
+                            fill: '-1',
+                            data: data["weather"]["daily"]["temperature_2m_max"]
+                        }
+                    ]
+                }
+            }
+        );
+        new Chart(
+            document.getElementById('percipitation-chart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: data["weather"]["daily"]["time"],
+                    datasets: [
+                        {
+                            label: '(mm)',
+                            data: data["weather"]["daily"]["precipitation_sum"]
+                        },
+                    ]
+                }
+            }
+        );
+        new Chart(
+            document.getElementById('daylight-chart'),
+            {
+                type: 'line',
+                data: {
+                    labels: data["weather"]["daily"]["time"],
+                    datasets: [
+                        {
+                            label: 'sunrise',
+                            data: data["weather"]["daily"]["sunrise"]
+                        },
+                        {
+                            label: 'sunset',
+                            data: data["weather"]["daily"]["sunset"]
                         }
                     ]
                 }
             }
         );
     })();
-    // DATA.getWeatherData(options);
 })

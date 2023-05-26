@@ -25,7 +25,6 @@ In addition, this project will include:
 This project will be implemented with the following technologies:
 * Weather data is populated using the Open-Mateo ```Historical Weather API``` [link](https://open-meteo.com/en/docs/historical-weather-api)
 * Convert zip codes into coordinates using the Open-Mateo ``` Geocoding API ``` [link](https://open-meteo.com/en/docs/geocoding-api)
-* Sunrise & Sunset times populated using [https://sunrise-sunset.org/api]
 * ``` Webpack ``` and ``` Babel ``` to bundle and transpile the source Javascript code.
 * ``` npm ``` to manage project dependencies
 * ```Danfo.js``` to manipulate and process structured data

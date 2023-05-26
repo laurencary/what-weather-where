@@ -14,10 +14,19 @@
 
 <body>
     <h2>What Weather Where</h2>
-    <button id="load-data">Load Data</button>
+    <form>
+        <label>Zip Code: 
+            <input type="text" name="zip-code">
+        </label>
+        <button id="load-data">Load Data</button>
+    </form>
     <div class="container">
+        <h2>Min and Max Temperatures</h2>
         <canvas id="temp-chart"></canvas>
-
+        <h2>Percipitation</h2>
+        <canvas id="percipitation-chart"></canvas>
+        <h2>Percipitation</h2>
+        <canvas id="daylight-chart"></canvas>
     </div>
 </body>
 

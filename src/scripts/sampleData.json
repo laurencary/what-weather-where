@@ -1,68 +1,11 @@
-export * as DATA from "./data";
-
-export async function getCoordinates(zipCode) {
-    const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${zipCode}&count=1&language=en&format=json`)
-    if (response.ok) {
-        const json =  await response.json();
-        return json.results[0]
-    } else {
-        throw response;
-    }
-};
-
-export async function getWeatherData(options) {
-    // const coordinates = await getCoordinates(options.zipCode);
-    // console.log(coordinates);
-    const data = {"meta": coordinates}
-    
-    // const response = await fetch(`https://archive-api.open-meteo.com/v1/archive?timezone=auto&latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&start_date=${options.startDate}&end_date=${options.endDate}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,sunrise,sunset`)
-    // if (response.ok) {
-    //     const json = await response.json();
-    //     data["weather"] = json;
-    //     return data;
-    // } else {
-    //     throw response.json();
-    // }
-    // console.log(sampleResponse);
-    data["weather"] = sampleResponse
-    return data;
-
-}
-
-const coordinates = {
-    "id": 5380748,
-    "name": "Palo Alto",
-    "latitude": 37.44188,
-    "longitude": -122.14302,
-    "elevation": 9,
-    "feature_code": "PPL",
-    "country_code": "US",
-    "admin1_id": 5332921,
-    "admin2_id": 5393021,
-    "timezone": "America/Los_Angeles",
-    "population": 66853,
-    "postcodes": [
-        "94301",
-        "94302",
-        "94304",
-        "94306",
-        "94309"
-    ],
-    "country_id": 6252001,
-    "country": "United States",
-    "admin1": "California",
-    "admin2": "Santa Clara"
-}
-
-
-const sampleResponse = {
+{
     "latitude": 37.4,
     "longitude": -122.1,
     "generationtime_ms": 0.822901725769043,
     "utc_offset_seconds": -25200,
     "timezone": "America/Los_Angeles",
     "timezone_abbreviation": "PDT",
-    "elevation": 20,
+    "elevation": 11,
     "daily_units": {
         "time": "iso8601",
         "temperature_2m_max": "°C",
@@ -176,3 +119,5 @@ const sampleResponse = {
         ]
     }
 }
+
+
