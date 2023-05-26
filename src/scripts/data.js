@@ -10,24 +10,38 @@ export async function getCoordinates(zipCode) {
     }
 };
 
-export async function getWeatherData(options) {
-    // const coordinates = await getCoordinates(options.zipCode);
-    // console.log(coordinates);
-    const data = {"meta": coordinates}
-    
+export async function getWeatherData(options, coordinates) {    
     // const response = await fetch(`https://archive-api.open-meteo.com/v1/archive?timezone=auto&latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&start_date=${options.startDate}&end_date=${options.endDate}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,sunrise,sunset`)
     // if (response.ok) {
     //     const json = await response.json();
-    //     data["weather"] = json;
-    //     return data;
+    //     return json;
     // } else {
     //     throw response.json();
-    // }
-    // console.log(sampleResponse);
-    data["weather"] = sampleResponse
-    return data;
-
+    // }    
 }
+
+export async function getWeatherMetrics(options) {
+    // const coordinates = await getCoordinates(options.zipCode);
+    // const weather = await getWeatherData(options, coordinates);
+    // const data = { "meta": coordinates, "weather": weather }
+
+    const data = { "meta": coordinates, "weather": sampleResponse}
+
+    data["weather"]["daily"]["sunrise"] = data["weather"]["daily"]["sunrise"].map(ts => extractHourFromTimestamp(ts))
+    data["weather"]["daily"]["sunset"] = data["weather"]["daily"]["sunset"].map(ts => extractHourFromTimestamp(ts))
+    data["weather"]["daily"]["daylight"] = []
+    for (let i = 0; i < data["weather"]["daily"]["sunrise"].length; i++) {
+        data["weather"]["daily"]["daylight"].push(data["weather"]["daily"]["sunset"][i] - data["weather"]["daily"]["sunrise"][i]);
+    }
+
+    return data;
+}
+
+
+const extractHourFromTimestamp = (ts) => {
+    return Number(ts.slice(11, 13)) + Number(ts.slice(14, 16)) / 60
+}
+
 
 const coordinates = {
     "id": 5380748,

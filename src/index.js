@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     
     (async function () {
-        const data = await DATA.getWeatherData(options);
-
+        const data = await DATA.getWeatherMetrics(options);
 
         new Chart(
             document.getElementById('temp-chart'),
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     datasets: [
                         {
                             label: 'Min',
-                            // backgroundColor: "white",
+                            // backgroundColor: "#4787b5",
                             data: data["weather"]["daily"]["temperature_2m_min"]
                         },
                         {
@@ -50,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
         new Chart(
-            document.getElementById('daylight-chart'),
+            document.getElementById('sun-chart'),
             {
                 type: 'line',
                 data: {
@@ -63,6 +62,21 @@ document.addEventListener("DOMContentLoaded", () => {
                         {
                             label: 'sunset',
                             data: data["weather"]["daily"]["sunset"]
+                        }
+                    ]
+                }
+            }
+        );
+        new Chart(
+            document.getElementById('daylight-chart'),
+            {
+                type: 'bar',
+                data: {
+                    labels: data["weather"]["daily"]["time"],
+                    datasets: [
+                        {
+                            label: 'daylight',
+                            data: data["weather"]["daily"]["daylight"]
                         }
                     ]
                 }
