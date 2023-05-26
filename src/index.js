@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const options = {
         startDate: "2023-05-01",
         endDate: "2023-05-15",
-        imperial: true,
+        imperialInd: true,
     };
 
     const form = document.getElementById("weather-form")
@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
         options.startDate = startDateInput.value;
         const endDateInput = document.querySelector(".end-date-input");
         options.endDate = endDateInput.value;
+        const imperialInput = document.querySelector(".imperial-input");
+        options.imperialInd = imperialInput.checked;
+        console.log(options.imperialInd)
         loadWeatherCharts(event)
     });
     

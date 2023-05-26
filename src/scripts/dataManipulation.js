@@ -19,7 +19,7 @@ export async function getWeatherMetrics(options) {
 
     data["weather"]["daylight"] = calcDaylight(data["weather"]["sunrise"],data["weather"]["sunset"])
 
-    if (options.imperial) {
+    if (options.imperialInd) {
         data["weather"] = convertToImperial(data["weather"]);
     }
 

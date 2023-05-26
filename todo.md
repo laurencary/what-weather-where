@@ -15,7 +15,6 @@
     * need to destroy current chart before making a new one
 * Research html form libraries
 * Create form 
-    * metric vs imperial option
     * list of selected cities 
 * research danfo.js to handle aggregating data by week/month.
 * styling & layout
