@@ -7,11 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
         startDate: "2023-05-06",
         endDate: "2023-05-20"
     };
+    const button = document.getElementById("load-data")
+    button.addEventListener("click", () => loadWeatherCharts);
 
     
-    (async function () {
+    async function loadWeatherCharts () {
+        console.log('loading charts');
         const data = await DATA.getWeatherMetrics(options);
-
+        const info = document.getElementById("info")
+        const location = `Viewing weather for ${data["meta"]["name"]}, ${data["meta"]["admin1"]} (${options.zipCode})`
+        info.innerText = location;
+        
         new Chart(
             document.getElementById('temp-chart'),
             {
@@ -82,5 +88,5 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         );
-    })();
+    };
 })
