@@ -3,9 +3,7 @@ import { weatherAPI } from './openMateoClient'
 export * as DATA from "./dataManipulation";
 
 export async function getWeatherMetrics(options) {
-    // console.log(options);
     // const coordinates = await weatherAPI.getCoordinates(options.zipCode);
-    // console.log(coordinates);
     // const weather = await weatherAPI.getWeatherData(options, coordinates);
     // const data = { "meta": coordinates, "weather": weather["daily"] };
     // delete weather["daily"];
@@ -14,20 +12,36 @@ export async function getWeatherMetrics(options) {
     const data = {"weather": sampleResponse["daily"]};
     delete sampleResponse["daily"];
     data["meta"] = { ...coordinates, ...sampleResponse};
-    data["weather"]["sunrise"] = data["weather"]["sunrise"].map(ts => extractHourFromTimestamp(ts));
-    data["weather"]["sunset"] = data["weather"]["sunset"].map(ts => extractHourFromTimestamp(ts));
-    data["weather"]["temperature_2m_max"] = data["weather"]["temperature_2m_max"].map(temp => convertCelsiusToFahrenheit(temp));
-    data["weather"]["temperature_2m_min"] = data["weather"]["temperature_2m_min"].map(temp => convertCelsiusToFahrenheit(temp));
-    
 
-    data["weather"]["daylight"] = []
-    for (let i = 0; i < data["weather"]["sunrise"].length; i++) {
-        data["weather"]["daylight"].push(data["weather"]["sunset"][i] - data["weather"]["sunrise"][i]);
+    for (const field of ["sunrise", "sunset"]) {
+        data["weather"][field] = data["weather"][field].map(ts => extractHourFromTimestamp(ts));
+    }
+
+    data["weather"]["daylight"] = calcDaylight(data["weather"]["sunrise"],data["weather"]["sunset"])
+
+    if (options.imperial) {
+        data["weather"] = convertToImperial(data["weather"]);
     }
 
     return data;
 }
 
+const calcDaylight = (sunriseArr, sunsetArr) => {
+    const daylightArr = [];
+    for (let i = 0; i < sunriseArr.length; i++) {
+        daylightArr.push(sunsetArr[i] - sunriseArr[i]);
+    }
+    return daylightArr;
+}
+
+const convertToImperial = (weatherObj) => {
+    const toFrnArr = ["temperature_2m_max", "temperature_2m_min"]
+    for (const field of toFrnArr) {
+        weatherObj[field] = weatherObj[field].map(ts => convertCelsiusToFahrenheit(ts));
+    }
+    weatherObj["precipitation_sum"] = weatherObj["precipitation_sum"].map(x => convertMmToInches(x));
+    return weatherObj;
+}
 
 const extractHourFromTimestamp = (ts) => {
     return Number(ts.slice(11, 13)) + Number(ts.slice(14, 16)) / 60
@@ -35,6 +49,10 @@ const extractHourFromTimestamp = (ts) => {
 
 const convertCelsiusToFahrenheit = (temp) => {
     return temp * 9/5 + 32;
+}
+
+const convertMmToInches = (distance) => {
+    return distance * 0.0393701;
 }
 
 

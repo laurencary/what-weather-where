@@ -4,7 +4,8 @@ import Chart from 'chart.js/auto'
 document.addEventListener("DOMContentLoaded", () => {
     const options = {
         startDate: "2023-05-01",
-        endDate: "2023-05-15"
+        endDate: "2023-05-15",
+        imperial: true,
     };
 
     const form = document.getElementById("weather-form")
@@ -22,10 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadWeatherCharts () {
         console.log('loading charts');
         const data = await DATA.getWeatherMetrics(options);
+        console.log(data["weather"]);
         const info = document.getElementById("info")
         const location = `Viewing weather for ${data["meta"]["name"]}, ${data["meta"]["admin1"]} (${options.zipCode})`
         info.innerText = location;
-        
         new Chart(
             document.getElementById('temp-chart'),
             {
@@ -36,11 +37,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         {
                             label: 'Min',
                             // backgroundColor: "#4787b5",
+                            showLine: false,
+                            pointStyle: false,
                             data: data["weather"]["temperature_2m_min"]
                         },
                         {
                             label: 'Max',
                             fill: '-1',
+                            showLine: false,
                             data: data["weather"]["temperature_2m_max"]
                         }
                     ]

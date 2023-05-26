@@ -26,3 +26,5 @@
 * current forecast view for multiple locations
 * auto complete search options
 * international data??
+* stacked bar char for rain & snow instead of percipitation
+
