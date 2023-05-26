@@ -3,13 +3,21 @@ import Chart from 'chart.js/auto'
 
 document.addEventListener("DOMContentLoaded", () => {
     const options = {
-        zipCode: "94301",
-        startDate: "2023-05-06",
-        endDate: "2023-05-20"
+        startDate: "2023-05-01",
+        endDate: "2023-05-15"
     };
-    const button = document.getElementById("load-data")
-    button.addEventListener("click", () => loadWeatherCharts);
 
+    const form = document.getElementById("weather-form")
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const zipCodeInput = document.querySelector(".zip-code-input");
+        options.zipCode = zipCodeInput.value;
+        const startDateInput = document.querySelector(".start-date-input");
+        options.startDate = startDateInput.value;
+        const endDateInput = document.querySelector(".end-date-input");
+        options.endDate = endDateInput.value;
+        loadWeatherCharts(event)
+    });
     
     async function loadWeatherCharts () {
         console.log('loading charts');

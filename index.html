@@ -14,11 +14,17 @@
 
 <body>
     <h2>What Weather Where</h2>
-    <form>
+    <form id="weather-form">
         <label>Zip Code: 
-            <input type="text" name="zip-code">
+            <input type="text" class="zip-code-input">
         </label>
-        <button id="load-data">Load Data</button>
+        <label>Start Date:
+            <input type="date" class="start-date-input">
+        </label>
+        <label>End Date:
+            <input type="date" class="end-date-input">
+        </label>
+        <input type="submit" value="Load Data" id="load-data">
     </form>
     <br>
     <h3 id="info"></h3>

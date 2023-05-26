@@ -11,24 +11,30 @@ export async function getCoordinates(zipCode) {
 };
 
 export async function getWeatherData(options, coordinates) {    
-    // const response = await fetch(`https://archive-api.open-meteo.com/v1/archive?timezone=auto&latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&start_date=${options.startDate}&end_date=${options.endDate}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,sunrise,sunset`)
-    // if (response.ok) {
-    //     const json = await response.json();
-    //     return json;
-    // } else {
-    //     throw response.json();
-    // }    
+    const response = await fetch(`https://archive-api.open-meteo.com/v1/archive?timezone=auto&latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&start_date=${options.startDate}&end_date=${options.endDate}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,sunrise,sunset`)
+    if (response.ok) {
+        const json = await response.json();
+        return json;
+    } else {
+        throw response.json();
+    }    
 }
 
 export async function getWeatherMetrics(options) {
-    // const coordinates = await getCoordinates(options.zipCode);
-    // const weather = await getWeatherData(options, coordinates);
-    // const data = { "meta": coordinates, "weather": weather }
+    console.log(options);
+    const coordinates = await getCoordinates(options.zipCode);
+    console.log(coordinates);
+    const weather = await getWeatherData(options, coordinates);
+    const data = { "meta": coordinates, "weather": weather };
 
-    const data = { "meta": coordinates, "weather": sampleResponse}
+    // const data = { "meta": coordinates, "weather": sampleResponse}
 
-    data["weather"]["daily"]["sunrise"] = data["weather"]["daily"]["sunrise"].map(ts => extractHourFromTimestamp(ts))
-    data["weather"]["daily"]["sunset"] = data["weather"]["daily"]["sunset"].map(ts => extractHourFromTimestamp(ts))
+    data["weather"]["daily"]["sunrise"] = data["weather"]["daily"]["sunrise"].map(ts => extractHourFromTimestamp(ts));
+    data["weather"]["daily"]["sunset"] = data["weather"]["daily"]["sunset"].map(ts => extractHourFromTimestamp(ts));
+    data["weather"]["daily"]["temperature_2m_max"] = data["weather"]["daily"]["temperature_2m_max"].map(temp => convertCelsiusToFahrenheit(temp));
+    data["weather"]["daily"]["temperature_2m_min"] = data["weather"]["daily"]["temperature_2m_min"].map(temp => convertCelsiusToFahrenheit(temp));
+    
+
     data["weather"]["daily"]["daylight"] = []
     for (let i = 0; i < data["weather"]["daily"]["sunrise"].length; i++) {
         data["weather"]["daily"]["daylight"].push(data["weather"]["daily"]["sunset"][i] - data["weather"]["daily"]["sunrise"][i]);
@@ -40,6 +46,10 @@ export async function getWeatherMetrics(options) {
 
 const extractHourFromTimestamp = (ts) => {
     return Number(ts.slice(11, 13)) + Number(ts.slice(14, 16)) / 60
+}
+
+const convertCelsiusToFahrenheit = (temp) => {
+    return temp * 9/5 + 32;
 }
 
 
@@ -100,8 +110,7 @@ const sampleResponse = {
             "2023-05-16",
             "2023-05-17",
             "2023-05-18",
-            "2023-05-19",
-            "2023-05-20"
+            "2023-05-19"
         ],
         "temperature_2m_max": [
             15.8,
