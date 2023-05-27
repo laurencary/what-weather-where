@@ -10,4 +10,11 @@ class myChart {
         medOrange: "#e6b06a",
         darkOrange: "#d68533"
     }
+
+    constructor(weather, id) {
+        this.id = id
+        this.label = weather["time"]
+        
+    }
 }
+
