@@ -4,9 +4,12 @@ import Chart from 'chart.js/auto'
 document.addEventListener("DOMContentLoaded", () => {
     const tempCanvas = document.getElementById('temp-chart');
     let tempChart = new Chart (tempCanvas);
-    const percipCanvas = document.getElementById('percipitation-chart');
+    const precipCanvas = document.getElementById('precipitation-chart');
+    let precipChart = new Chart (precipCanvas);
     const sunCanvas = document.getElementById('sun-chart');
+    let sunChart = new Chart(sunCanvas);
     const daylightCanvas = document.getElementById('daylight-chart');
+    let daylightChart = new Chart(daylightCanvas);
     
     const zipCodeInputs = ['94301', '53704']
     const options = {}
@@ -26,16 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function loadWeatherCharts () {
         tempChart.destroy()
-        // percipChart.clear()
-        // sunChart.clear()
-        // daylightChart.clear()
-        console.log('loading charts');
+        precipChart.destroy()
+        sunChart.destroy()
+        daylightChart.destroy()
+
         const data = await DATA.getAllWeatherMetrics(options, zipCodeInputs);
         const info = document.getElementById("info")
         // const location = `Viewing weather for ${data["meta"]["name"]}, ${data["meta"]["admin1"]} (${options.zipCode})`
         // info.innerText = location;
 
         const tempChartDataset = DATA.createTempChartData(data);
+        const precipChartDataset = DATA.createPrecipChartData(data);
+        const sunChartDataset = DATA.createSunChartData(data);
+        const daylightChartDataset = DATA.createDaylightChartData(data);
 
         tempChart = new Chart(
             tempCanvas,
@@ -47,70 +53,47 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
             }
         );
-        // new Chart(
-        //     percipCanvas,
-        //     {
-        //         type: 'bar',
-        //         data: {
-        //             labels: data["weather"]["time"],
-        //             datasets: [
-        //                 {
-        //                     label: 'rain',
-        //                     data: data["weather"]["rain_sum"]
-        //                 },
-        //                 {
-        //                     label: 'snow',
-        //                     data: data["weather"]["snowfall_sum"]
-        //                 }
-        //             ]
-        //         },
-        //         options: {
-        //             scales: {
-        //                 x: {
-        //                     stacked: true
-        //                 },
-        //                 y: {
-        //                     stacked: true,
-        //                     type: 'logarithmic'
-        //                 }
-        //             }
-        //         }
-            
-        //     }
-        // );
-        // new Chart(
-        //     sunCanvas,
-        //     {
-        //         type: 'line',
-        //         data: {
-        //             labels: data["weather"]["time"],
-        //             datasets: [
-        //                 {
-        //                     label: 'sunrise',
-        //                     data: data["weather"]["sunrise"]
-        //                 },
-        //                 {
-        //                     label: 'sunset',
-        //                     data: data["weather"]["sunset"]
-        //                 }
-        //             ]
-        //         }
-        //     }
-        // );
-        // new Chart(
-        //     daylightCanvas,
-        //     {
-        //         type: 'bar',
-        //         data: {
-        //             labels: data["weather"]["time"],
-        //             datasets: [
-        //                 {
-        //                     label: 'daylight',
-        //                     data: data["weather"]["daylight"]
-        //                 }
-        //             ]
-        //         }
-        //     }
-        // );
+        precipChart = new Chart(
+            precipCanvas,
+            {
+                type: 'bar',
+                data: {
+                    labels: data[0]["weather"]["time"],
+                    datasets: precipChartDataset
+                },
+                options: {
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            type: 'logarithmic'
+                        }
+                    }
+                }
+
+            }
+        );
+        sunChart = new Chart(
+            sunCanvas,
+            {
+                type: 'line',
+                data: {
+                    labels: data[0]["weather"]["time"],
+                    datasets: sunChartDataset
+                }
+            }
+        );
+        daylightChart = new Chart(
+            daylightCanvas,
+            {
+                type: 'bar',
+                data: {
+                    labels: data[0]["weather"]["time"],
+                    datasets: daylightChartDataset
+                }
+            }
+        );
     };
 })
