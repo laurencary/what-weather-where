@@ -19,14 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
         options.endDate = endDateInput.value;
         const imperialInput = document.querySelector(".imperial-input");
         options.imperialInd = imperialInput.checked;
-        console.log(options.imperialInd)
         loadWeatherCharts(event)
     });
     
     async function loadWeatherCharts () {
         console.log('loading charts');
         const data = await DATA.getWeatherMetrics(options);
-        console.log(data["weather"]);
         const info = document.getElementById("info")
         const location = `Viewing weather for ${data["meta"]["name"]}, ${data["meta"]["admin1"]} (${options.zipCode})`
         info.innerText = location;
@@ -62,11 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
                     labels: data["weather"]["time"],
                     datasets: [
                         {
-                            label: '(mm)',
-                            data: data["weather"]["precipitation_sum"]
+                            label: 'rain',
+                            data: data["weather"]["rain_sum"]
                         },
+                        {
+                            label: 'snow',
+                            data: data["weather"]["snowfall_sum"]
+                        }
                     ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            stacked: true
+                        },
+                        y: {
+                            stacked: true,
+                            type: 'logarithmic'
+                        }
+                    }
                 }
+            
             }
         );
         new Chart(

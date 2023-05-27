@@ -3,21 +3,21 @@ import { weatherAPI } from './openMateoClient'
 export * as DATA from "./dataManipulation";
 
 export async function getWeatherMetrics(options) {
-    // const coordinates = await weatherAPI.getCoordinates(options.zipCode);
-    // const weather = await weatherAPI.getWeatherData(options, coordinates);
-    // const data = { "meta": coordinates, "weather": weather["daily"] };
-    // delete weather["daily"];
-    // data["meta"] = { ...coordinates, ...weather};
+    const coordinates = await weatherAPI.getCoordinates(options.zipCode);
+    const weather = await weatherAPI.getWeatherData(options, coordinates);
+    const data = { "meta": coordinates, "weather": weather["daily"] };
+    delete weather["daily"];
+    data["meta"] = { ...coordinates, ...weather};
 
-    const data = {"weather": sampleResponse["daily"]};
-    delete sampleResponse["daily"];
-    data["meta"] = { ...coordinates, ...sampleResponse};
+    // const data = {"weather": sampleResponse["daily"]};
+    // delete sampleResponse["daily"];
+    // data["meta"] = { ...coordinates, ...sampleResponse};
 
     for (const field of ["sunrise", "sunset"]) {
         data["weather"][field] = data["weather"][field].map(ts => extractHourFromTimestamp(ts));
     }
-
     data["weather"]["daylight"] = calcDaylight(data["weather"]["sunrise"],data["weather"]["sunset"])
+    data["weather"]["snowfall_sum"] = data["weather"]["snowfall_sum"].map(x => 100 * x)
 
     if (options.imperialInd) {
         data["weather"] = convertToImperial(data["weather"]);
@@ -40,6 +40,8 @@ const convertToImperial = (weatherObj) => {
         weatherObj[field] = weatherObj[field].map(ts => convertCelsiusToFahrenheit(ts));
     }
     weatherObj["precipitation_sum"] = weatherObj["precipitation_sum"].map(x => convertMmToInches(x));
+    weatherObj["rain_sum"] = weatherObj["rain_sum"].map(x => convertMmToInches(x));
+    weatherObj["snowfall_sum"] = weatherObj["snowfall_sum"].map(x => convertMmToInches(x));
     return weatherObj;
 }
 
