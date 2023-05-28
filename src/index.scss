@@ -16,6 +16,7 @@ nav {
     display: flex;
     align-items: center;
     z-index: 1;
+    // justify-content: space-evenly;
 
 }
 
@@ -47,6 +48,13 @@ aside {
     background-color: aliceblue;
 }
 
+#selections-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 40%;
+}
+
 .content {
     display: flex;
     flex-direction: row;
@@ -64,4 +72,17 @@ aside {
 
 .zip-code-input {
     width: 100%;
+}
+
+li {
+    margin: 0 2vw 1vh 2vw;
+}
+
+ul {
+    margin-top: 2vh;
+    padding: 0;
+}
+
+#zip-container {
+    height: 30%;
 }

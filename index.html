@@ -27,23 +27,29 @@
     <nav>
         <img src="./src/images/happy-sun.png" alt="">
         <h1>What Weather Where</h1>
+        <!-- <h1>Let's checkout Palo Alto and Madison</h1> -->
     </nav>
     <section class="content">
         <div class="form-container">
             <aside id="weather-form">
-                <label>Start Date:
-                    <input type="date" class="start-date-input">
-                </label>
-                <label>End Date:
-                    <input type="date" class="end-date-input">
-                </label>
-                <label>
-                    <input type="radio" name="metrics" class="metric-input">Metric
-                    <input type="radio" name="metrics" class="imperial-input">Imperial
-                </label>
-                <label>
-                    <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
-                </label>
+                <div id="selections-container">
+                    <label>Start Date:
+                        <input type="date" class="start-date-input">
+                    </label>
+                    <label>End Date:
+                        <input type="date" class="end-date-input">
+                    </label>
+                    <label>
+                        <input type="radio" name="metrics" class="metric-input">Metric
+                        <input type="radio" name="metrics" class="imperial-input">Imperial
+                    </label>
+                </div>
+                <div id="zip-container">
+                    <label>
+                        <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
+                    </label>
+                    <ul id="location-list"></ul>
+                </div>
                 <button id="form-button">Load Weather Metrics</button>
                 <!-- <input type="submit" value="Load Data" id="load-data"> -->
             </aside>

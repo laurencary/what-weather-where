@@ -3,15 +3,15 @@
 * Max number of cities to be viewed at a time
 
 # To Do
-* handle null data 
-* error handling
-* Research html form libraries
-* Create form 
+* Form Funcitonality
     * list of selected cities 
-* research danfo.js to handle aggregating data by week/month.
+    * adding a zip code calls the api and shows the location in list with city and state name
+* Data
+    * research danfo.js to handle aggregating data by week/month.
+    * handle null data 
+    * error handling
 * styling & layout
 * organize project into clear files
-* adding a zip code calls the api and shows the location in list with city and state name
 
 # Bonus functionality 
 * slot machine
