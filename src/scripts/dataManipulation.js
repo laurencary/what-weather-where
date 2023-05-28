@@ -1,29 +1,74 @@
-import { weatherAPI } from './openMateoClient'
 import * as dfd from "danfojs"
+import { weatherAPI } from './openMateoClient'
 export * as DATA from "./dataManipulation";
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
     // const locArr = [];
     // for (const zipCode of zipCodeArr) {
-    //     const locMetrics = await getLocationMetrics(options, zipCode);
-    //     locArr.push(locMetrics);
-    // }
-    const locArr = sampleArray;
-    // if (options.xStep !== 'days') {
-    //     locArr = aggregateData(options.xStep, locArr);
-    // }
+        //     const locMetrics = await getLocationMetrics(options, zipCode);
+        //     locArr.push(locMetrics);
+        // }
+        let locArr = sampleArray;
+        if (options.xStep !== 'days') {
+            locArr = aggregateData(options.xStep, locArr);
+        }
+        return locArr;
+    }
+    
+const aggregateData = (step, locArr) => {
+    let timeArr = [];
+    if (step === 'weeks') {
+        timeArr = generateWeekArr(locArr[0]['weather']['time']);
+    } else {
+        timeArr = generateMonthArr(locArr[0]['weather']['time']);
+    }
+
+    const dataObj = createDataObj(locArr);
+    const df = new dfd.DataFrame(dataObj);
+    df.addColumn('date', Array(locArr.length).fill(timeArr).flat(), { inplace: true }); 
+    let agg_df = df.groupby(["date","loc_id"]).mean();
+
+    locArr = updateToAggData(agg_df, locArr)
     return locArr;
 }
 
-const aggregateData = (step, locArr) => {
-    const dataObj = createDataObj(locArr);
-    df = new dfd.DataFrame(dataObj)
+const updateToAggData = (agg_df, locArr) => {
+    for (const loc of locArr) {
+        const id = loc['meta']['id'];
+        let loc_df = agg_df.query(agg_df["loc_id"].eq(id));
+        loc['weather']['time'] = loc_df['date'].values
+        loc['weather']['temperature_2m_max'] = loc_df['max_temp_mean'].values
+        loc['weather']['temperature_2m_min'] = loc_df['min_temp_mean'].values
+        loc['weather']['snowfall_sum'] = loc_df['snow_sum_mean'].values
+        loc['weather']['rain_sum'] = loc_df['rain_sum_mean'].values
+        loc['weather']['sunrise'] = loc_df['sunrise_mean'].values
+        loc['weather']['sunset'] = loc_df['sunset_mean'].values
+        loc['weather']['daylight'] = loc_df['daylight_mean'].values
+    }
+    return locArr;
+}
+
+
+
+const generateMonthArr = (daysArr) => {
+    return daysArr.map(el => el.slice(5,7));
+}
+
+const generateWeekArr = (daysArr) => {
+    const weekArr = [0];
+    for (let i = 1; i < daysArr.length; i++) {
+        if (i % 7 === 0) {
+            weekArr.push(daysArr[i])
+        } else {
+            weekArr.push(weekArr[i - 1])
+        }
+    }
+    return weekArr;
 }
 
 const createDataObj = (locArr) => {
-    const dataObj = { 'date': [],
-                        'loc_id': [],
+    const dataObj = { 'loc_id': [],
                         'max_temp': [],
                         'min_temp': [],
                         'snow_sum': [],
@@ -33,7 +78,7 @@ const createDataObj = (locArr) => {
                         'daylight': [] 
                     };
     for (const loc of locArr) {
-        dataObj['date'] = dataObj['date'].concat(loc['weather']['time']);
+        // dataObj['date'] = dataObj['date'].concat(loc['weather']['time']);
         dataObj['loc_id'] = dataObj['loc_id'].concat(Array(loc['weather']['time'].length).fill(loc['meta']['id']));
         dataObj['max_temp'] = dataObj['max_temp'].concat(loc['weather']['temperature_2m_max']);
         dataObj['min_temp'] = dataObj['min_temp'].concat(loc['weather']['temperature_2m_min']);
@@ -43,6 +88,7 @@ const createDataObj = (locArr) => {
         dataObj['sunset'] = dataObj['sunset'].concat(loc['weather']['sunset']);
         dataObj['daylight'] = dataObj['daylight'].concat(loc['weather']['daylight']);
     }
+    return dataObj;
 }
 
 
@@ -72,7 +118,6 @@ export const getPrecipYObj = (datasets) => {
     }
 
     if (includesSnow(datasets)){
-        console.log('here');
         obj.type = 'logarithmic';
     }
     return obj;
