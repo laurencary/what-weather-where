@@ -34,6 +34,28 @@ export async function getLocationMetrics(options, zipCode) {
     return data;
 }
 
+export const getPrecipYObj = (datasets) => {
+    const obj = {
+        stacked: true,
+    }
+
+    if (includesSnow(datasets)){
+        console.log('here');
+        obj.type = 'logarithmic';
+    }
+    return obj;
+}
+
+const includesSnow = (datasets) => {
+    for (const dataset of datasets) {
+        if (dataset['label'].includes('snow')) {
+            if (dataset['data'].some(el => el !== 0)) return true;
+        }
+    }
+    return false;
+}
+
+
 const calcDaylight = (sunriseArr, sunsetArr) => {
     const daylightArr = [];
     for (let i = 0; i < sunriseArr.length; i++) {
@@ -99,7 +121,7 @@ export const createPrecipChartData = (locArr) => {
                 stack: loc["meta"]["name"]
             },
             {
-                label: `${loc["meta"]["name"]} rain`,
+                label: `${loc["meta"]["name"]} snow`,
                 data: loc["weather"]["snowfall_sum"],
                 stack: loc["meta"]["name"]
             }

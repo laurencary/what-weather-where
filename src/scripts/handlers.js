@@ -39,6 +39,8 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     canvasObj.sun.datasets = DATA.createSunChartData(data);
     canvasObj.daylight.datasets = DATA.createDaylightChartData(data);
 
+    const precipYScaleObj = DATA.getPrecipYObj(canvasObj.precip.datasets);
+
     // tempChart
     canvasObj.temp.chart = new Chart(
         canvasObj.temp.canvas,
@@ -64,10 +66,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                     x: {
                         stacked: true
                     },
-                    y: {
-                        stacked: true,
-                        type: 'logarithmic'
-                    }
+                    y: precipYScaleObj
                 }
             }
 
@@ -89,7 +88,9 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                         reverse: true,
                         max: 24,
                         min: 0,
-                        stepValue: 4
+                        ticks: {
+                            stepSize: 4,
+                        }
                     }
                 }
             }

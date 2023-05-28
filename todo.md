@@ -3,9 +3,6 @@
 * Max number of cities to be viewed at a time
 
 # To Do
-* Form Funcitonality
-    * list of selected cities 
-    * adding a zip code calls the api and shows the location in list with city and state name
 * Data
     * research danfo.js to handle aggregating data by week/month.
     * handle null data 

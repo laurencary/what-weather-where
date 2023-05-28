@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("form-button")
     form.addEventListener("click", (event) => {
         const zipCodeArr = HANDLERS.getArrayOfZipCodes();
-        console.log(zipCodeArr);
         const options = HANDLERS.getInputs();
         HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event)
     });
