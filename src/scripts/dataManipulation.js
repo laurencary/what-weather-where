@@ -1,5 +1,5 @@
 import { weatherAPI } from './openMateoClient'
-
+import * as dfd from "danfojs"
 export * as DATA from "./dataManipulation";
 
 
@@ -10,7 +10,39 @@ export async function getAllWeatherMetrics(options, zipCodeArr) {
     //     locArr.push(locMetrics);
     // }
     const locArr = sampleArray;
+    // if (options.xStep !== 'days') {
+    //     locArr = aggregateData(options.xStep, locArr);
+    // }
     return locArr;
+}
+
+const aggregateData = (step, locArr) => {
+    const dataObj = createDataObj(locArr);
+    df = new dfd.DataFrame(dataObj)
+}
+
+const createDataObj = (locArr) => {
+    const dataObj = { 'date': [],
+                        'loc_id': [],
+                        'max_temp': [],
+                        'min_temp': [],
+                        'snow_sum': [],
+                        'rain_sum': [],
+                        'sunrise': [],
+                        'sunset': [],
+                        'daylight': [] 
+                    };
+    for (const loc of locArr) {
+        dataObj['date'] = dataObj['date'].concat(loc['weather']['time']);
+        dataObj['loc_id'] = dataObj['loc_id'].concat(Array(loc['weather']['time'].length).fill(loc['meta']['id']));
+        dataObj['max_temp'] = dataObj['max_temp'].concat(loc['weather']['temperature_2m_max']);
+        dataObj['min_temp'] = dataObj['min_temp'].concat(loc['weather']['temperature_2m_min']);
+        dataObj['snow_sum'] = dataObj['snow_sum'].concat(loc['weather']['snowfall_sum']);
+        dataObj['rain_sum'] = dataObj['rain_sum'].concat(loc['weather']['rain_sum']);
+        dataObj['sunrise'] = dataObj['sunrise'].concat(loc['weather']['sunrise']);
+        dataObj['sunset'] = dataObj['sunset'].concat(loc['weather']['sunset']);
+        dataObj['daylight'] = dataObj['daylight'].concat(loc['weather']['daylight']);
+    }
 }
 
 

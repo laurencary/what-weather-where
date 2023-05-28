@@ -55,7 +55,7 @@ aside {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 40%;
+  height: 50%;
 }
 
 .content {

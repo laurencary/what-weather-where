@@ -39,7 +39,14 @@
                     <label>End Date:
                         <input type="date" class="end-date-input">
                     </label>
-                    <label>
+                    <label>Aggregation: 
+                        <select name="x-step" id="x-step">
+                            <option value="days">Daily</option>
+                            <option value="weeks">Weekly</option>
+                            <option value="months">Months</option>
+                        </select>
+                    </label>
+                    <label>Units: 
                         <input type="radio" name="metrics" class="metric-input">Metric
                         <input type="radio" name="metrics" class="imperial-input">Imperial
                     </label>

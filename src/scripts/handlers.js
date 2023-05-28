@@ -30,7 +30,9 @@ export const getArrayOfZipCodes = () => {
 }
 
 export const getInputs = () => {
-    const options = {};
+    const options = {xStep: 'Weeks'};
+    // const xStepInput = document.querySelector("#x-step")
+    // options.xStep = xStepInput.value;
     const startDateInput = document.querySelector(".start-date-input");
     options.startDate = startDateInput.value;
     const endDateInput = document.querySelector(".end-date-input");
