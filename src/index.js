@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         daylightChart.destroy()
 
         const data = await DATA.getAllWeatherMetrics(options, zipCodeInputs);
-        const info = document.getElementById("info")
+        // const info = document.getElementById("info")
         // const location = `Viewing weather for ${data["meta"]["name"]}, ${data["meta"]["admin1"]} (${options.zipCode})`
         // info.innerText = location;
 

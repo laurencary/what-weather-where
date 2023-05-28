@@ -1,10 +1,59 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+@import url(https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Roboto:wght@100;300&display=swap);
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
 body {
   background-color: lightblue;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto";
+}
+
+nav {
+  position: fixed;
+  align-self: center;
+  width: 100vw;
+  height: 10vh;
+  background-color: lightcyan;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  z-index: 1;
 }
 
 h1 {
   text-align: center;
+  margin-left: 5vw;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.form-container {
+  margin: 5vh 5vw 5vh 5vw;
+  width: 25vw;
+  height: 80vh;
+  position: fixed;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 10vh;
+  overflow: hidden;
+}
+
+.chart-container {
+  position: relative;
+  left: 30vw;
+  margin: 5vh 5vw 5vh 5vw;
+  width: 60vw;
 }
