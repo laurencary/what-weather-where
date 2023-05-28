@@ -25,26 +25,28 @@
 
 <body>
     <nav>
+        <img src="./src/images/happy-sun.png" alt="">
         <h1>What Weather Where</h1>
     </nav>
     <section class="content">
         <div class="form-container">
-            <form id="weather-form">
-                <label>Zip Code: 
-                    <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
-                </label>
+            <aside id="weather-form">
                 <label>Start Date:
                     <input type="date" class="start-date-input">
                 </label>
                 <label>End Date:
                     <input type="date" class="end-date-input">
                 </label>
-                <label>Metrics:
+                <label>
                     <input type="radio" name="metrics" class="metric-input">Metric
                     <input type="radio" name="metrics" class="imperial-input">Imperial
                 </label>
-                <input type="submit" value="Load Data" id="load-data">
-            </form>
+                <label>
+                    <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
+                </label>
+                <button id="form-button">Load Weather Metrics</button>
+                <!-- <input type="submit" value="Load Data" id="load-data"> -->
+            </aside>
         </div>
         <div class="chart-container">
             <h2>Min and Max Temperatures</h2>
@@ -57,6 +59,8 @@
             <canvas id="daylight-chart"></canvas>
         </div>
     </section>
+
+    <footer></footer>
 </body>
 
 </html>

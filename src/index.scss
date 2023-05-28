@@ -9,7 +9,6 @@ body {
 
 nav {
     position: fixed;
-    align-self: center;
     width: 100vw;
     height: 10vh;
     background-color: lightcyan;
@@ -20,16 +19,24 @@ nav {
 
 }
 
-h1 {
-    text-align: center;
+img {
+    max-width: 80%;
+    max-height: 80%;
     margin-left: 5vw;
 }
 
-form {
+h1 {
+    margin-bottom:0vh;
+    font-size: 130%;
+    font-weight: bolder;
+}
+
+aside {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 100%;
+    padding: 2vh 2vw 2vh 2vw;
 }
 
 .form-container {
@@ -37,6 +44,7 @@ form {
     width: 25vw;
     height: 80vh;
     position: fixed;
+    background-color: aliceblue;
 }
 
 .content {
@@ -52,4 +60,8 @@ form {
     left: 30vw;
     margin: 5vh 5vw 5vh 5vw;
     width: 60vw;
+}
+
+.zip-code-input {
+    width: 100%;
 }

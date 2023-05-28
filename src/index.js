@@ -13,9 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const zipCodeInputs = ['94301', '53704']
     const options = {}
-    const form = document.getElementById("weather-form")
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
+    const form = document.getElementById("form-button")
+
+    const zipCodeInput = document.querySelector(".zip-code-input");
+    // zipCodeInput.addEventListener('keyup keypress', )
+
+    form.addEventListener("click", (event) => {
         // const zipCodeInput = document.querySelector(".zip-code-input");
         // options.zipCode = zipCodeInput.value;
         const startDateInput = document.querySelector(".start-date-input");
@@ -42,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const precipChartDataset = DATA.createPrecipChartData(data);
         const sunChartDataset = DATA.createSunChartData(data);
         const daylightChartDataset = DATA.createDaylightChartData(data);
+
 
         tempChart = new Chart(
             tempCanvas,

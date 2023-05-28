@@ -11,6 +11,7 @@
 * research danfo.js to handle aggregating data by week/month.
 * styling & layout
 * organize project into clear files
+* adding a zip code calls the api and shows the location in list with city and state name
 
 # Bonus functionality 
 * slot machine
@@ -20,3 +21,5 @@
 * international data??
 * stacked bar char for rain & snow instead of percipitation
 
+sun source:
+happy PNG Designed By 588ku from https://pngtree.com/freepng/happy-sun_5911072.html?sol=downref&id=bef
