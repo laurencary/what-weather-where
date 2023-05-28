@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             zipCodeInput.value = ''
         }
     })
+
     
     const form = document.getElementById("form-button")
     form.addEventListener("click", (event) => {

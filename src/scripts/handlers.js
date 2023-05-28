@@ -7,12 +7,25 @@ export const appendZipCodeToLocationList = (newZip) => {
     const zipList = document.getElementById("location-list");
     const li = document.createElement("li")
     li.innerText = newZip;
+    const btn = document.createElement("button")
+    btn.innerText = 'Delete'
+    btn.classList.add("delete-button");
+    li.appendChild(btn);
     zipList.appendChild(li);
+
+    const deleteBtns = document.getElementsByClassName("delete-button");
+    for (const item of deleteBtns) {
+        item.addEventListener("click", e => {
+            e.target.parentNode.remove();
+        });
+    }
+
+
 }
 
 export const getArrayOfZipCodes = () => {
     const liZips = document.querySelectorAll('li');
-    const zipArr = Array.from(liZips).map(liZip => {return liZip.innerText});
+    const zipArr = Array.from(liZips).map(liZip => { return liZip.innerText.replace('Delete', '') });
     return zipArr;
 }
 
