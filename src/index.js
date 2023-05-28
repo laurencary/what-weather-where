@@ -82,6 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 data: {
                     labels: data[0]["weather"]["time"],
                     datasets: sunChartDataset
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            reverse: true,
+                            max: 24,
+                            min: 0,
+                            stepValue: 4
+                        }    
+                    }
                 }
             }
         );
