@@ -8,7 +8,8 @@ class myChart {
         lightGreen: "#9dd4a4",
         lightOrange: "#dec29e",
         medOrange: "#e6b06a",
-        darkOrange: "#d68533"
+        darkOrange: "#d68533",
+        iconOrange: "#f7ad1e"
     }
 
     constructor(weather, id) {

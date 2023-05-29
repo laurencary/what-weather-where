@@ -10,6 +10,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: "Roboto";
+  color: #04045b !important;
 }
 
 nav {
@@ -88,4 +89,9 @@ ul {
 
 #zip-container {
   height: 30%;
+}
+
+input {
+  border: #04045b solid 0.5px;
+  border-radius: 2px;
 }

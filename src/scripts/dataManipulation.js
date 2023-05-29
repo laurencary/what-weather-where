@@ -4,16 +4,16 @@ export * as DATA from "./dataManipulation";
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
-    // const locArr = [];
-    // for (const zipCode of zipCodeArr) {
-        //     const locMetrics = await getLocationMetrics(options, zipCode);
-        //     locArr.push(locMetrics);
-        // }
-        let locArr = sampleArray;
-        if (options.xStep !== 'days') {
-            locArr = aggregateData(options.xStep, locArr);
-        }
-        return locArr;
+    let locArr = [];
+    for (const zipCode of zipCodeArr) {
+            const locMetrics = await getLocationMetrics(options, zipCode);
+            locArr.push(locMetrics);
+    }
+    // let locArr = sampleArray;
+    if (options.xStep !== 'days') {
+        locArr = aggregateData(options.xStep, locArr);
+    }
+    return locArr;
     }
     
 const aggregateData = (step, locArr) => {

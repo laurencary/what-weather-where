@@ -30,9 +30,9 @@ export const getArrayOfZipCodes = () => {
 }
 
 export const getInputs = () => {
-    const options = {xStep: 'weeks'};
-    // const xStepInput = document.querySelector("#x-step")
-    // options.xStep = xStepInput.value;
+    const options = {};
+    const xStepInput = document.querySelector("#x-step")
+    options.xStep = xStepInput.value;
     const startDateInput = document.querySelector(".start-date-input");
     options.startDate = startDateInput.value;
     const endDateInput = document.querySelector(".end-date-input");
@@ -49,6 +49,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     canvasObj.daylight.chart.destroy()
 
     const data = await DATA.getAllWeatherMetrics(options, zipCodeArr);
+    console.log(data);
     canvasObj.temp.datasets = DATA.createTempChartData(data);
     canvasObj.precip.datasets = DATA.createPrecipChartData(data);
     canvasObj.sun.datasets = DATA.createSunChartData(data);
