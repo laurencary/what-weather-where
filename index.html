@@ -43,12 +43,12 @@
                         <select name="x-step" id="x-step">
                             <option value="days">Daily</option>
                             <option value="weeks">Weekly</option>
-                            <option value="months">Months</option>
+                            <option value="months">Monthly</option>
                         </select>
                     </label>
-                    <label>Units: 
+                    <label>Units:
+                        <input type="radio" name="metrics" class="imperial-input" checked>Imperial
                         <input type="radio" name="metrics" class="metric-input">Metric
-                        <input type="radio" name="metrics" class="imperial-input">Imperial
                     </label>
                 </div>
                 <div id="zip-container">
@@ -58,7 +58,6 @@
                     <ul id="location-list"></ul>
                 </div>
                 <button id="form-button">Load Weather Metrics</button>
-                <!-- <input type="submit" value="Load Data" id="load-data"> -->
             </aside>
         </div>
         <div class="chart-container">

@@ -5,12 +5,13 @@ export * as HANDLERS from "./handlers";
 
 export const appendZipCodeToLocationList = (newZip) => {
     const zipList = document.getElementById("location-list");
-    const li = document.createElement("li")
+    const li = document.createElement("li");
     li.innerText = newZip;
-    const btn = document.createElement("button")
-    btn.innerText = 'Delete'
+    const btn = document.createElement("button");
+    btn.innerText = 'Delete';
     btn.classList.add("delete-button");
     li.appendChild(btn);
+    li.classList.add('zip-container');
     zipList.appendChild(li);
 
     const deleteBtns = document.getElementsByClassName("delete-button");

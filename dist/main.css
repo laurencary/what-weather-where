@@ -18,7 +18,7 @@ nav {
   width: 100vw;
   height: 10vh;
   background-color: lightcyan;
-  opacity: 1;
+  opacity: 20;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -93,5 +93,25 @@ ul {
 
 input {
   border: #04045b solid 0.5px;
-  border-radius: 2px;
+  border-radius: 2em;
+  text-align: center;
+}
+
+option {
+  color: #04045b;
+}
+
+#form-button {
+  background-color: #04045b !important;
+  border-radius: 2em;
+  color: white;
+}
+
+.zip-container {
+  background-color: lightblue;
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  align-items: center;
+  border-radius: 2em;
 }
