@@ -25,9 +25,15 @@
 
 <body>
     <nav>
-        <img src="./src/images/weather-icons/2995005_sun_climate_day_beach_giallo_sole_soleggiato_sunny_yellow_weather.png" alt="">
-        <h1>What Weather Where</h1>
+        <div class="logo">
+            <img src="./src/images/weather-icons/2995005_sun_climate_day_beach_giallo_sole_soleggiato_sunny_yellow_weather.png" class="logo-img" alt="">
+            <h1>What Weather Where</h1>
+        </div>
         <!-- <h1>Let's checkout Palo Alto and Madison</h1> -->
+        <div class="socials">
+            <a href="https://github.com/laurencary"><img src="./src/images/github-mark/github-mark.png" alt=""></a>
+            <a href="https://www.linkedin.com/in/laurengarmstrong/"><img src="./src/images/LinkedIn-Logos/LI-In-Bug.png" id="linkedin" alt=""></a>
+        </div>
     </nav>
     <section class="content">
         <div class="form-container">
@@ -58,11 +64,14 @@
                         </div>
                     </label>
                     <div class="units">
-                        <input type="radio" name="metrics" id="imperial-input" class="radio-input" checked>
-                        <label for="imperial" class="radio-labels">Imperial Units</label> 
-                        <input type="radio" name="metrics" id="metric-input" class="radio-input">
-                        <label for="metric" class="radio-labels">Metric Units</label> 
-                        <div id="radio-background"></div>
+                        <label>Units:</label>
+                        <label for="imperial" class="radio-labels">
+                            <input type="radio" name="metrics" id="imperial-input" class="radio-input" checked>
+                            Imperial</label> 
+                        <label for="metric" class="radio-labels">
+                            <input type="radio" name="metrics" id="metric-input" class="radio-input">
+                            Metric</label> 
+                        <!-- <div id="radio-background"></div> -->
                     </div>
                 </div>
                 <button id="form-button">Load Weather Metrics</button>
@@ -75,12 +84,12 @@
             <canvas id="precipitation-chart"></canvas>
             <h2>Sunrise and Sunset</h2>
             <canvas id="sun-chart"></canvas>
-            <h2>Daylight</h2>
+            <h2>Hours of Daylight</h2>
             <canvas id="daylight-chart"></canvas>
+            <footer>
+                <h2>Sources</h2>
+            </footer>
         </div>
     </section>
-
-    <footer></footer>
 </body>
-
 </html>

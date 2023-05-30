@@ -82,6 +82,13 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                 labels: data[0]["weather"]["time"],
                 datasets: canvasObj.temp.datasets
             },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
         }
     );
     //precipChart
@@ -99,6 +106,11 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                         stacked: true
                     },
                     y: precipYScaleObj
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
 
@@ -124,6 +136,11 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                             stepSize: 4,
                         }
                     }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 }
             }
         }
@@ -136,6 +153,13 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
             data: {
                 labels: data[0]["weather"]["time"],
                 datasets: canvasObj.daylight.datasets
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
             }
         }
     );

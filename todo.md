@@ -1,6 +1,6 @@
 # Outstanding Questions/Decisions
 * how to handle gap between historical & forecasts?
-* Max number of cities to be viewed at a time
+* Max number of cities to be viewed at a time: 4
 
 # To Do
 * Data
@@ -9,7 +9,6 @@
 * styling & layout
     * patternly for rain and snow https://github.com/ashiguruma/patternomaly
     * hide chart names when no chart
-    * map month names to monthly data
     * chart colors
     * own legend? fix legend
 * add listener to aggregation drop down

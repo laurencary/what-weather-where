@@ -1,16 +1,23 @@
 import * as dfd from "danfojs"
 import { weatherAPI } from './openMateoClient'
 export * as DATA from "./dataManipulation";
+import * as pattern from "patternomaly"
+
+const COLORS = [["#895F8F80", "#966B9D80"],
+                ["#C1747480", "#C9868680"],
+                ["#f0ab6980", "#F2B88080"],
+                ["#e0c0a980", "#E7CEBC80"]
+            ]
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
-    // let locArr = [];
-    // for (const zipCode of zipCodeArr) {
-    //         const locMetrics = await getLocationMetrics(options, zipCode);
-    //         locArr.push(locMetrics);
-    // }
-    // console.log(locArr);
-    let locArr = sampleArray;
+    let locArr = [];
+    for (const zipCode of zipCodeArr) {
+            const locMetrics = await getLocationMetrics(options, zipCode);
+            locArr.push(locMetrics);
+    }
+    console.log(locArr);
+    // let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
     }
@@ -182,7 +189,9 @@ const convertMmToInches = (distance) => {
 
 export const createTempChartData = (locArr) => {
     let datasets = [];
+    let i = 0;
     for (const loc of locArr) {
+        console.log(COLORS[i][0]);
         datasets = datasets.concat([
             {
                 label: "false",
@@ -196,45 +205,56 @@ export const createTempChartData = (locArr) => {
                 fill: '-1',
                 showLine: false,
                 pointStyle: false,
-                data: loc["weather"]["temperature_2m_max"]
+                data: loc["weather"]["temperature_2m_max"],
+                borderColor: COLORS[i][0],
+                backgroundColor: COLORS[i][1]
             }
         ])
+        i += 1;
     }
     return datasets;
 }
 
 export const createPrecipChartData = (locArr) => {
     let datasets = [];
+    let i = 0;
     for (const loc of locArr) {
         datasets = datasets.concat([
             {
                 label: `${loc["meta"]["name"]} rain`,
                 data: loc["weather"]["rain_sum"],
-                stack: loc["meta"]["name"]
+                stack: loc["meta"]["name"],
+                backgroundColor: pattern.draw('dash',COLORS[i][1])
             },
             {
                 label: `${loc["meta"]["name"]} snow`,
                 data: loc["weather"]["snowfall_sum"],
-                stack: loc["meta"]["name"]
+                stack: loc["meta"]["name"],
+                backgroundColor: pattern.draw('dot', COLORS[i][0])
             }
         ])
+        i += 1;
     }
     return datasets;
 }
 
 export const createSunChartData = (locArr) => {
     let datasets = [];
+    let i = 0;
     for (const loc of locArr) {
         datasets = datasets.concat([
             {
                 label: `${loc["meta"]["name"]} sunrise`,
-                data: loc["weather"]["sunrise"]
+                data: loc["weather"]["sunrise"],
+                backgroundColor: COLORS[i][0]
             },
             {
                 label: `${loc["meta"]["name"]} sunset`,
-                data: loc["weather"]["sunset"]
+                data: loc["weather"]["sunset"],
+                backgroundColor: COLORS[i][0]
             }
         ])
+        i += 1;
     }
     return datasets;
 }
@@ -242,13 +262,17 @@ export const createSunChartData = (locArr) => {
 
 export const createDaylightChartData = (locArr) => {
     let datasets = [];
+    let i = 0;
     for (const loc of locArr) {
         datasets = datasets.concat([
             {
                 label: `${loc["meta"]["name"]}`,
-                data: loc["weather"]["daylight"]
+                data: loc["weather"]["daylight"],
+                backgroundColor: COLORS[i][0],
+                borderColor: COLORS[i][1]
             }
         ])
+        i += 1;
     }
     return datasets;
 }

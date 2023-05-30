@@ -4,6 +4,7 @@ export async function getCoordinates(zipCode) {
     const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${zipCode}&count=1&language=en&format=json`)
     if (response.ok) {
         const json = await response.json();
+        console.log(json);
         return json.results[0]
     } else {
         throw response;
