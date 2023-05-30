@@ -4,10 +4,17 @@
 
 # To Do
 * Data
-    * research danfo.js to handle aggregating data by week/month.
     * handle null data 
     * error handling
 * styling & layout
+    * patternly for rain and snow https://github.com/ashiguruma/patternomaly
+    * hide chart names when no chart
+    * map month names to monthly data
+    * chart colors
+    * own legend? fix legend
+* add listener to aggregation drop down
+* segmented controls https://codepen.io/S-Maas/pen/NrYvdK
+
 * organize project into clear files
 
 # Bonus functionality 

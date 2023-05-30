@@ -33,20 +33,26 @@ h1 {
     font-weight: bolder;
 }
 
+h2 {
+    text-align: center;
+    font-size: 140;
+}
+
 aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding: 2vh 2vw 2vh 2vw;
+    padding: 3vh 2vw 3vh 2vw;
 }
 
 .form-container {
     margin: 5vh 5vw 5vh 5vw;
-    width: 25vw;
+    width: 22vw;
     height: 80vh;
     position: fixed;
     background-color: aliceblue;
+    border-radius: 1.4em;
 }
 
 #selections-container {
@@ -72,11 +78,13 @@ aside {
 }
 
 .zip-code-input {
-    width: 100%;
+    width: 70%;
+    height: 4vh;
 }
 
 li {
     margin: 0 2vw 1vh 2vw;
+    height: 4vh;
 }
 
 ul {
@@ -85,7 +93,7 @@ ul {
 }
 
 #zip-container {
-    height: 30%;
+    height: 37%;
 }
 
 input {
@@ -99,15 +107,21 @@ option {
     color: #04045b;
 }
 
-#form-button {
+#form-button, #add-zip {
     background-color: #04045b !important;
     border-radius: 2em;
     color: white;
+    height: 4vh;
 }
 
-// .delete-button {
+.delete-button {
+    background-color: #04045b !important;
+    border-radius: 2em;
+    color: white;
+    height: 3vh;
+    font-size: 60%;
+}
 
-// }
 
 .zip-container {
     background-color: lightblue;
@@ -116,4 +130,89 @@ option {
     width: 80%;
     align-items: center;
     border-radius: 2em;
+    height: 4vh;
 }
+
+#select-container {
+    border-radius: 2em;
+    display: flex;
+    overflow: hidden;
+    background: white;
+    border: 0.5px solid #04045b;
+    justify-content: flex-end;
+    height: 4vh;
+}
+
+.select-box {
+    border: 0px;
+    outline: none;
+    text-align: center;
+    display: block;
+    width: 20vw;
+    height: 4vh;
+}
+
+
+.date-input {
+    display: block;
+    width: 100%;
+    height: 4vh;
+}
+
+#enter-zip-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+canvas {
+    background-color: white;
+    margin-bottom: 3vh;
+    border-radius: 1.4em;
+    padding: 2vh;
+}
+
+// .warning {
+
+// }
+
+// .radio-input {
+//     display: none;
+// }
+
+// .units {
+//     position: relative;
+//     background-color: white;
+//     z-index: 5;
+//     width: 100%;
+// }
+
+// #radio-background, .radio-labels {
+//     width: 50%;
+//     height: 5hv;
+//     text-align: center;
+//     display: inline-block;
+//     // padding-top: 10px;
+//     margin-right: -3px;
+//     z-index: 2;
+//     cursor: pointer;
+//     outline: 0.5px solid #04045b;
+
+// }
+
+// #radio-background {
+//     background-color: aliceblue;
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     z-index: -1;
+// }
+
+// #imperial-input:checked ~ #radio-background {
+//     transform: translateX(0);
+//     transition: transform 0.5s ease-in-out;
+// }
+
+// #imperial-input:checked ~ #radio-background {
+//     transform: translateX(50%);
+//     transition: transform 0.5s ease-in-out;
+// }

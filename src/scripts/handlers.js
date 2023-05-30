@@ -3,6 +3,22 @@ import Chart from 'chart.js/auto'
 
 export * as HANDLERS from "./handlers";
 
+export const addZipCode = (zipCodeInput) => {
+    const newZip = zipCodeInput.value;
+    const checksArr = [];
+    checksArr.push(newZip.length !== 5);
+    var reg = new RegExp('^[0-9]+$');
+    checksArr.push(!reg.test(newZip));
+    if (checksArr.some(e => e === true)) {
+        window.alert("That is not a valid zip code");
+    } else {
+        appendZipCodeToLocationList(newZip);
+    }
+    zipCodeInput.value = ''
+}
+
+
+
 export const appendZipCodeToLocationList = (newZip) => {
     const zipList = document.getElementById("location-list");
     const li = document.createElement("li");
@@ -20,8 +36,6 @@ export const appendZipCodeToLocationList = (newZip) => {
             e.target.parentNode.remove();
         });
     }
-
-
 }
 
 export const getArrayOfZipCodes = () => {
@@ -34,11 +48,12 @@ export const getInputs = () => {
     const options = {};
     const xStepInput = document.querySelector("#x-step")
     options.xStep = xStepInput.value;
-    const startDateInput = document.querySelector(".start-date-input");
+    const startDateInput = document.getElementById("start-date-input");
     options.startDate = startDateInput.value;
-    const endDateInput = document.querySelector(".end-date-input");
+    const endDateInput = document.getElementById("end-date-input");
     options.endDate = endDateInput.value;
-    const imperialInput = document.querySelector(".imperial-input");
+    const imperialInput = document.getElementById("imperial-input");
+    console.log(imperialInput);
     options.imperialInd = imperialInput.checked;
     return options;
 }

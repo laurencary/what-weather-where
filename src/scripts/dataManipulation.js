@@ -9,6 +9,7 @@ export async function getAllWeatherMetrics(options, zipCodeArr) {
     //         const locMetrics = await getLocationMetrics(options, zipCode);
     //         locArr.push(locMetrics);
     // }
+    // console.log(locArr);
     let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
@@ -50,13 +51,27 @@ const updateToAggData = (agg_df, locArr) => {
 }
 
 
-
 const generateMonthArr = (daysArr) => {
-    return daysArr.map(el => el.slice(5,7));
+    const monthObj = {
+        '01': 'Jan',
+        '02': 'Feb',
+        '03': 'Mar',
+        '04': 'Apr',
+        '05': 'May',
+        '06': 'Jun',
+        '07': 'Jul',
+        '08': 'Aug',
+        '09': 'Sep',
+        '10': 'Oct',
+        '11': 'Nov',
+        '12': 'Dev',
+    }
+
+    return daysArr.map(el => monthObj[el.slice(5, 7)]);
 }
 
 const generateWeekArr = (daysArr) => {
-    const weekArr = [0];
+    const weekArr = [daysArr[0]];
     for (let i = 1; i < daysArr.length; i++) {
         if (i % 7 === 0) {
             weekArr.push(daysArr[i])

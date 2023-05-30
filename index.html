@@ -32,30 +32,38 @@
     <section class="content">
         <div class="form-container">
             <aside id="weather-form">
+            <div id="zip-container">
+                <label>Choose Locations: </label>
+                <div id="enter-zip-container">
+                    <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
+                    <button id="add-zip">Add</button>
+                </div>
+                <ul id="location-list"></ul>
+            </div>
                 <div id="selections-container">
                     <label>Start Date:
-                        <input type="date" class="start-date-input">
+                        <input type="date" id="start-date-input" class="date-input">
                     </label>
                     <label>End Date:
-                        <input type="date" class="end-date-input">
+                        <input type="date" id="end-date-input" class="date-input">
                     </label>
+
                     <label>Aggregation: 
-                        <select name="x-step" id="x-step">
-                            <option value="days">Daily</option>
-                            <option value="weeks">Weekly</option>
-                            <option value="months">Monthly</option>
-                        </select>
+                        <div id="select-container">
+                            <select class="select-box" name="x-step" id="x-step">
+                                <option value="days">Daily</option>
+                                <option value="weeks">Weekly</option>
+                                <option value="months">Monthly</option>
+                            </select>
+                        </div>
                     </label>
-                    <label>Units:
-                        <input type="radio" name="metrics" class="imperial-input" checked>Imperial
-                        <input type="radio" name="metrics" class="metric-input">Metric
-                    </label>
-                </div>
-                <div id="zip-container">
-                    <label>
-                        <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
-                    </label>
-                    <ul id="location-list"></ul>
+                    <div class="units">
+                        <input type="radio" name="metrics" id="imperial-input" class="radio-input" checked>
+                        <label for="imperial" class="radio-labels">Imperial Units</label> 
+                        <input type="radio" name="metrics" id="metric-input" class="radio-input">
+                        <label for="metric" class="radio-labels">Metric Units</label> 
+                        <div id="radio-background"></div>
+                    </div>
                 </div>
                 <button id="form-button">Load Weather Metrics</button>
             </aside>

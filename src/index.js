@@ -22,12 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const zipCodeInput = document.querySelector(".zip-code-input");
     zipCodeInput.addEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
-            const newZip = zipCodeInput.value;
-            HANDLERS.appendZipCodeToLocationList(newZip);
-            zipCodeInput.value = ''
+            HANDLERS.addZipCode(zipCodeInput);
         }
     })
     
+    const addZipButton = document.getElementById('add-zip');
+    addZipButton.addEventListener('click', (event) => {
+        HANDLERS.addZipCode(zipCodeInput);
+    })
+
     const form = document.getElementById("form-button")
     form.addEventListener("click", (event) => {
         const zipCodeArr = HANDLERS.getArrayOfZipCodes();
