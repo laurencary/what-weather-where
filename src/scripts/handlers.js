@@ -75,8 +75,9 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
 
     welcome.classList.add("hidden");
     slots.classList.remove("hidden");
-    slotMachine.init();
-    slotMachine.spin();
+    // slotMachine.init();
+    // slotMachine.spin();
+    slotMachine.slide();
     
     canvasObj.temp.chart.destroy()
     canvasObj.precip.chart.destroy()

@@ -27,13 +27,18 @@
     margin-right: 0.6em;
 }
 
-.boxes {
-    transition: transform 1s ease-in-out;
-}
+// .boxes {
+//     transition: transform 1s ease-in-out;
+// }
 
 .box {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+    transition: all 1s ease-in-out;
+}
+
+.hide {
+    height: 0;
 }

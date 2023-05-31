@@ -15,9 +15,9 @@ const items = [
     '☀️',
 ];
 
-const doors = document.querySelectorAll('.door');
 
 export function init(firstInit = true, groups = 1, duration = 1) {
+    const doors = document.querySelectorAll('.door');
     for (const door of doors) {
         if (firstInit) {
             door.dataset.spinned = '0';
@@ -25,7 +25,7 @@ export function init(firstInit = true, groups = 1, duration = 1) {
             return;
         }
 
-        const boxes = querySelector('.boxes');
+        const boxes = document.querySelector('.boxes');
         const boxesClone = boxes.cloneNode(false);
         const pool = ['❓']
 
@@ -75,6 +75,7 @@ export function init(firstInit = true, groups = 1, duration = 1) {
 
 export async function spin() {
     init(false, 1, 2);
+    const doors = document.querySelectorAll('.door');
 
     for (const door of doors) {
         const boxes = door.querySelector('.boxes');
@@ -94,3 +95,19 @@ function shuffle([...arr]) {
     return arr;
 }
 
+export async function slide() {
+    console.log('calling slide');
+    const box1 = document.getElementById('box1');
+    const box2 = document.getElementById('box2');
+    const box3 = document.getElementById('box3');
+
+    box1.classList.toggle('hide');
+    box2.classList.toggle('hide');
+    box3.classList.toggle('hide');
+} 
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
