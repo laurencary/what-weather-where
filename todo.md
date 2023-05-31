@@ -1,16 +1,14 @@
 # Outstanding Questions/Decisions
 * how to handle gap between historical & forecasts?
 
+
 # To Do
-* Data
-    * handle null data 
-    * error handling
-        * api doesn't have weather
-        * form isn't filled out fully
-        * make two diff forms? one for zips one for other stuff so we can use the required functionality
+* error handling
+    * api doesn't have weather
+    * form isn't filled out fully
+    * make two diff forms? one for zips one for other stuff so we can use the required functionality
 * styling & layout
     * hide chart names when no chart
-    * chart colors
     * own legend? fix legend
 * add listener to aggregation drop down
 * segmented controls https://codepen.io/S-Maas/pen/NrYvdK

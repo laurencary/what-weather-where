@@ -11,13 +11,13 @@ const COLORS = [["#FF9AA2", "#FF9AA295"],
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
-    // let locArr = [];
-    // for (const zipCode of zipCodeArr) {
-    //         const locMetrics = await getLocationMetrics(options, zipCode);
-    //         locArr.push(locMetrics);
-    // }
+    let locArr = [];
+    for (const zipCode of zipCodeArr) {
+            const locMetrics = await getLocationMetrics(options, zipCode);
+            locArr.push(locMetrics);
+    }
     // console.log(locArr);
-    let locArr = sampleArray;
+    // let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
     }
@@ -53,18 +53,29 @@ const updateToAggData = (timeArr, locArr) => {
     const daylight = [];
     const time = [];
     let j = -1;
+    let temp_count = 0;
 
     for (let i = 0; i < timeArr.length; i++) {
         if (i === 0 || timeArr[i] !== timeArr[i - 1]) {
-            maxTemp.push(locArr["weather"]["temperature_2m_max"][i])
-            minTemp.push(locArr["weather"]["temperature_2m_min"][i])
-            snow.push(locArr["weather"]["snowfall_sum"][i])
-            rain.push(locArr["weather"]["rain_sum"][i])
-            sunrise.push(locArr["weather"]["sunrise"][i])
-            sunset.push(locArr["weather"]["sunset"][i])
-            daylight.push(locArr["weather"]["daylight"][i])
-            time.push(locArr["weather"]["time"][i])
-            j += 1
+            if (i > 0) {
+                maxTemp[j] /= temp_count;
+                minTemp[j] /= temp_count;
+                snow[j] /= temp_count;
+                rain[j] /= temp_count;
+                sunrise[j] /= temp_count;
+                sunset[j] /= temp_count;
+                daylight[j] /= temp_count;
+            }
+            maxTemp.push(locArr["weather"]["temperature_2m_max"][i]);
+            minTemp.push(locArr["weather"]["temperature_2m_min"][i]);
+            snow.push(locArr["weather"]["snowfall_sum"][i]);
+            rain.push(locArr["weather"]["rain_sum"][i]);
+            sunrise.push(locArr["weather"]["sunrise"][i]);
+            sunset.push(locArr["weather"]["sunset"][i]);
+            daylight.push(locArr["weather"]["daylight"][i]);
+            time.push(timeArr[i]);
+            j += 1;
+            temp_count = 1;
         } else {
             maxTemp[j] += locArr["weather"]["temperature_2m_max"][i]
             minTemp[j] += locArr["weather"]["temperature_2m_min"][i]
@@ -73,6 +84,16 @@ const updateToAggData = (timeArr, locArr) => {
             sunrise[j] += locArr["weather"]["sunrise"][i]
             sunset[j] += locArr["weather"]["sunset"][i]
             daylight[j] += locArr["weather"]["daylight"][i]
+            temp_count += 1
+            if (i === timeArr.length - 1) {
+                maxTemp[j] /= temp_count;
+                minTemp[j] /= temp_count;
+                snow[j] /= temp_count;
+                rain[j] /= temp_count;
+                sunrise[j] /= temp_count;
+                sunset[j] /= temp_count;
+                daylight[j] /= temp_count;
+            }
         }
     }
 
@@ -127,7 +148,7 @@ export async function getLocationMetrics(options, zipCode) {
     const data = { "meta": coordinates, "weather": weather["daily"] };
     delete weather["daily"];
     data["meta"] = { ...coordinates, ...weather};
-
+    console.log(data["weather"]); 
     for (const field of ["sunrise", "sunset"]) {
         data["weather"][field] = data["weather"][field].map(ts => extractHourFromTimestamp(ts));
     }
@@ -171,6 +192,7 @@ const calcDaylight = (sunriseArr, sunsetArr) => {
 }
 
 const convertToImperial = (weatherObj) => {
+    console.log(weatherObj["temperature_2m_max"]);
     const toFrnArr = ["temperature_2m_max", "temperature_2m_min"]
     for (const field of toFrnArr) {
         weatherObj[field] = weatherObj[field].map(ts => convertCelsiusToFahrenheit(ts));
@@ -186,7 +208,9 @@ const extractHourFromTimestamp = (ts) => {
 }
 
 const convertCelsiusToFahrenheit = (temp) => {
-    return temp * 9/5 + 32;
+    if (temp !== null) {
+        return temp * 9/5 + 32;
+    }
 }
 
 const convertMmToInches = (distance) => {
@@ -198,7 +222,6 @@ export const createTempChartData = (locArr) => {
     let datasets = [];
     let i = 0;
     for (const loc of locArr) {
-        console.log(COLORS[i][0]);
         datasets = datasets.concat([
             {
                 label: "false",

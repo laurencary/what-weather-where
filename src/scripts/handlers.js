@@ -71,7 +71,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     canvasObj.daylight.chart.destroy()
 
     const data = await DATA.getAllWeatherMetrics(options, zipCodeArr);
-    console.log(data);
+    // console.log(data);
     canvasObj.temp.datasets = DATA.createTempChartData(data);
     canvasObj.precip.datasets = DATA.createPrecipChartData(data);
     canvasObj.sun.datasets = DATA.createSunChartData(data);
