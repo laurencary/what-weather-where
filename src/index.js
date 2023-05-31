@@ -44,15 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (zipCodeArr.length === 0) {
             window.alert("Please enter at least one zip code.")
         } else {
-            // const slots = document.getElementById("slot-machine");
             const welcome = document.getElementById("welcome");
             welcome.classList.add("hidden");
-            // init();
-            // slots.classList.remove("hidden");
-            // spin();
-            // sleep(3000);
             HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event)
-            // slots.classList.add("hidden");
         }
     });
 
