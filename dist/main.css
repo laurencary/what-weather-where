@@ -1,4 +1,10 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Roboto:wght@100;300&display=swap);
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/form.scss ***!
+  \****************************************************************************************************/
 .form-container {
     margin: 5vh 4vw 5vh 4vw;
     width: 22vw;
@@ -140,6 +146,9 @@ button:hover,
 .active {
     background-color: #04045b;
 }
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/slot-machine.scss ***!
+  \************************************************************************************************************/
 #slot-machine {
     position: relative;
     left: 34vw;
@@ -177,6 +186,122 @@ button:hover,
     font-size: 5em;
 }
 
-body{background-image:linear-gradient(to bottom, lightblue, white);background-attachment:fixed;display:flex;flex-direction:column;font-family:"Roboto";color:#04045b !important}nav{position:fixed;width:100vw;height:10vh;background-color:#84cbe3;opacity:20;display:flex;justify-content:space-between;z-index:1}.logo,.socials{height:10vh;display:flex;flex-direction:row;align-items:center}.nav-anchors{height:10vh;display:flex;align-items:center}img{display:inline;max-height:70%}.logo-img{max-height:80%;margin-left:4vw}#linkedin{margin-right:4vw;margin-left:2vw}h1{margin-bottom:0vh;margin-left:.4vw;font-size:150%;font-weight:bolder}h2{text-align:center;font-size:140}aside{display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:3vh 2vw 3vh 2vw}.content{display:flex;flex-direction:row;position:relative;top:10vh;overflow:hidden}#chart-container{position:relative;left:26vw;margin:5vh 4vw 5vh 4vw;width:66vw}canvas{background-color:#fff;margin-bottom:3vh;border-radius:1.4em;padding:2vh}.hidden{display:none !important}p{font-size:20px;position:relative;left:30vw;margin:15vh 38vw 4vh 4vw;text-align:justify;overflow:auto}img.legend{height:4vh}h3{text-align:center;background-color:#fff;margin-bottom:-6vh;padding-top:1vh;padding-bottom:3vh;border-top-left-radius:1.4em;border-top-right-radius:1.4em}
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
+body {
+  background-image: linear-gradient(to bottom, lightblue, white);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto";
+  color: #04045b !important;
+}
 
-/*# sourceMappingURL=main.css.map*/
+nav {
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  background-color: rgb(132, 203, 227);
+  opacity: 20;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.logo, .socials {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-anchors {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+img {
+  display: inline;
+  max-height: 70%;
+}
+
+.logo-img {
+  max-height: 80%;
+  margin-left: 4vw;
+}
+
+#linkedin {
+  margin-right: 4vw;
+  margin-left: 2vw;
+}
+
+h1 {
+  margin-bottom: 0vh;
+  margin-left: 0.4vw;
+  font-size: 150%;
+  font-weight: bolder;
+}
+
+h2 {
+  text-align: center;
+  font-size: 140;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 3vh 2vw 3vh 2vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 10vh;
+  overflow: hidden;
+}
+
+#chart-container {
+  position: relative;
+  left: 26vw;
+  margin: 5vh 4vw 5vh 4vw;
+  width: 66vw;
+}
+
+canvas {
+  background-color: white;
+  margin-bottom: 3vh;
+  border-radius: 1.4em;
+  padding: 2vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+p {
+  font-size: 20px;
+  position: relative;
+  left: 30vw;
+  margin: 15vh 38vw 4vh 4vw;
+  text-align: justify;
+  overflow: auto;
+}
+
+img.legend {
+  height: 4vh;
+}
+
+h3 {
+  text-align: center;
+  background-color: white;
+  margin-bottom: -6vh;
+  padding-top: 1vh;
+  padding-bottom: 3vh;
+  border-top-left-radius: 1.4em;
+  border-top-right-radius: 1.4em;
+}
