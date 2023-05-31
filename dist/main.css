@@ -122,6 +122,12 @@ option {
 .zip-container:nth-child(4) {
     background-color: #a5b2e6;
 }
+
+button:hover,
+#form-button:hover,
+#add-zip:hover {
+    background-color: rgb(29, 29, 195) !important;
+}
 /*!************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/slot-machine.scss ***!
   \************************************************************************************************************/
@@ -267,4 +273,18 @@ p {
   margin: 15vh 38vw 4vh 4vw;
   text-align: justify;
   overflow: auto;
+}
+
+img.legend {
+  height: 4vh;
+}
+
+h3 {
+  text-align: center;
+  background-color: white;
+  margin-bottom: -6vh;
+  padding-top: 1vh;
+  padding-bottom: 3vh;
+  border-top-left-radius: 1.4em;
+  border-top-right-radius: 1.4em;
 }

@@ -115,3 +115,9 @@ option {
 .zip-container:nth-child(4) {
     background-color: #a5b2e6;
 }
+
+button:hover,
+#form-button:hover,
+#add-zip:hover {
+    background-color: rgb(29, 29, 195) !important;
+}

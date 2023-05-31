@@ -38,6 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const options = HANDLERS.getInputs();
         if (options.startDate > options.endDate) {
             window.alert("Start date must be before end date.")
+        } else if (zipCodeArr.length === 0 && zipCodeInput.value !== '') {
+            HANDLERS.addZipCode(zipCodeInput)
+            HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event) 
         } else if (zipCodeArr.length === 0) {
             window.alert("Please enter at least one zip code.")
         } else {

@@ -11,13 +11,13 @@ const COLORS = [["#FF9AA2", "#FF9AA295"],
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
-    let locArr = [];
-    for (const zipCode of zipCodeArr) {
-            const locMetrics = await getLocationMetrics(options, zipCode);
-            locArr.push(locMetrics);
-    }
+    // let locArr = [];
+    // for (const zipCode of zipCodeArr) {
+    //         const locMetrics = await getLocationMetrics(options, zipCode);
+    //         locArr.push(locMetrics);
+    // }
     // console.log(locArr);
-    // let locArr = sampleArray;
+    let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
     }
