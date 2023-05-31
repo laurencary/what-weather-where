@@ -33,6 +33,7 @@ const aggregateData = (step, locArr) => {
     }
 
     for (let i = 0; i < locArr.length; i++) {
+
         locArr[i]["weather"]["temperature_2m_max"] = updateToAggData(timeArr, locArr[i]["weather"]["temperature_2m_max"]);
         locArr[i]["weather"]["temperature_2m_min"] = updateToAggData(timeArr, locArr[i]["weather"]["temperature_2m_min"]);
         locArr[i]["weather"]["snowfall_sum"] = updateToAggData(timeArr, locArr[i]["weather"]["snowfall_sum"]);
@@ -40,81 +41,41 @@ const aggregateData = (step, locArr) => {
         locArr[i]["weather"]["sunrise"] = updateToAggData(timeArr, locArr[i]["weather"]["sunrise"]);
         locArr[i]["weather"]["sunset"] = updateToAggData(timeArr, locArr[i]["weather"]["sunset"]);
         locArr[i]["weather"]["daylight"] = updateToAggData(timeArr, locArr[i]["weather"]["daylight"]);
-        locArr[i]["weather"]["time"] = updateToAggData(timeArr, locArr[i]["weather"]["time"]);
-        
-        locArr[i] = updateToAggData(timeArr, locArr[i])
+        locArr[i]["weather"]["time"] = timeArr.filter(onlyUnique);
     }
     
     return locArr;
 }
 
-const updateToAggData = (timeArr, locArr) => {
-    const maxTemp = [];
-    const minTemp = [];
-    const snow =[];
-    const rain = [];
-    const sunrise = [];
-    const sunset = [];
-    const daylight = [];
-    const time = [];
+const onlyUnique = (value, index, array) => {
+    return array.indexOf(value) === index;
+}
+
+
+const updateToAggData = (timeArr, data) => {
+    const aggData = [];
     let j = -1;
     let temp_count = 0;
+    data = data.filter(n => n !== undefined)
 
-    for (let i = 0; i < timeArr.length; i++) {
+    for (let i = 0; i < data.length; i++) {
         if (i === 0 || timeArr[i] !== timeArr[i - 1]) {
             if (i > 0) {
-                maxTemp[j] /= temp_count;
-                minTemp[j] /= temp_count;
-                snow[j] /= temp_count;
-                rain[j] /= temp_count;
-                sunrise[j] /= temp_count;
-                sunset[j] /= temp_count;
-                daylight[j] /= temp_count;
+                aggData[j] /= temp_count;
             }
-            maxTemp.push(locArr["weather"]["temperature_2m_max"][i]);
-            minTemp.push(locArr["weather"]["temperature_2m_min"][i]);
-            snow.push(locArr["weather"]["snowfall_sum"][i]);
-            rain.push(locArr["weather"]["rain_sum"][i]);
-            sunrise.push(locArr["weather"]["sunrise"][i]);
-            sunset.push(locArr["weather"]["sunset"][i]);
-            daylight.push(locArr["weather"]["daylight"][i]);
-            time.push(timeArr[i]);
+            aggData.push(data[i]);
             j += 1;
             temp_count = 1;
         } else {
-            maxTemp[j] += locArr["weather"]["temperature_2m_max"][i]
-            minTemp[j] += locArr["weather"]["temperature_2m_min"][i]
-            snow[j] += locArr["weather"]["snowfall_sum"][i]
-            rain[j] += locArr["weather"]["rain_sum"][i]
-            sunrise[j] += locArr["weather"]["sunrise"][i]
-            sunset[j] += locArr["weather"]["sunset"][i]
-            daylight[j] += locArr["weather"]["daylight"][i]
+            aggData[j] += data[i]
             temp_count += 1
-            if (i === timeArr.length - 1) {
-                maxTemp[j] /= temp_count;
-                minTemp[j] /= temp_count;
-                snow[j] /= temp_count;
-                rain[j] /= temp_count;
-                sunrise[j] /= temp_count;
-                sunset[j] /= temp_count;
-                daylight[j] /= temp_count;
+            if (i === data.length - 1) {
+                aggData[j] /= temp_count;
             }
         }
     }
 
-    locArr["weather"]["temperature_2m_max"] = maxTemp;
-    locArr["weather"]["temperature_2m_min"] = minTemp;
-    locArr["weather"]["snowfall_sum"] = snow;
-    locArr["weather"]["rain_sum"] = rain;
-    locArr["weather"]["sunrise"] = sunrise;
-    locArr["weather"]["sunset"] = sunset;
-    locArr["weather"]["daylight"] = daylight.map(n => n < 0 ? 23.99 : n);
-    locArr["weather"]["time"] = time;
-
-    console.log(maxTemp);
-    console.log(time);
-
-    return locArr;
+    return aggData;
 
 }
 
