@@ -25,19 +25,21 @@ nav {
   z-index: 1;
 }
 
-.logo {
+.logo, .socials {
   height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.socials {
-  margin-top: 1.5vh;
+a {
+  height: 10vh;
+  display: flex;
+  align-items: center;
 }
 
 img {
-  max-width: 80%;
+  display: inline;
   max-height: 80%;
 }
 
@@ -106,17 +108,12 @@ aside {
   height: 4vh;
 }
 
-li {
-  margin: 0 2vw 1vh 2vw;
-  height: 4vh;
-}
-
 ul {
   margin-top: 2vh;
   padding: 0;
 }
 
-#zip-container {
+#zip-codes-container {
   height: 37%;
 }
 
@@ -152,6 +149,7 @@ option {
   align-items: center;
   border-radius: 2em;
   height: 4vh;
+  margin: 0 2vw 1vh 2vw;
 }
 
 #select-container {
@@ -179,7 +177,7 @@ option {
   height: 4vh;
 }
 
-#enter-zip-container {
+#zip-input-container {
   display: flex;
   justify-content: space-between;
 }
@@ -210,4 +208,17 @@ li:nth-child(3) {
 
 li:nth-child(4) {
   background-color: #a5b2e6;
+}
+
+.hidden {
+  display: none;
+}
+
+p {
+  font-size: 20px;
+  position: relative;
+  left: 26vw;
+  margin: 15vh 30vw 4vh 4vw;
+  text-align: justify;
+  overflow: auto;
 }
