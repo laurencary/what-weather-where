@@ -18,7 +18,6 @@ export const addZipCode = (zipCodeInput) => {
 }
 
 
-
 export const appendZipCodeToLocationList = (newZip) => {
     const zipList = document.getElementById("location-list");
     const liEls = document.getElementsByClassName("zip-container");
@@ -30,7 +29,6 @@ export const appendZipCodeToLocationList = (newZip) => {
         btn.classList.add("delete-button");
         li.appendChild(btn);
         li.classList.add('zip-container');
-        // li.classList.add(`zip_${liEls.length + 1}`);
         zipList.appendChild(li);
         
         const deleteBtns = document.getElementsByClassName("delete-button");
@@ -46,7 +44,7 @@ export const appendZipCodeToLocationList = (newZip) => {
 
 export const getArrayOfZipCodes = () => {
     const liZips = document.querySelectorAll('.zip-container');
-    const zipArr = Array.from(liZips).map(liZip => { return liZip.innerText.replace('Delete', '') });
+    const zipArr = Array.from(liZips).map(liZip => { return liZip.innerText.slice(0, 6) });
     return zipArr;
 }
 
@@ -65,19 +63,11 @@ export const getInputs = () => {
 }
 
 export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
-    const welcome = document.getElementById("welcome");
-    const slots = document.getElementById("slot-machine");
     const chartContainer = document.getElementById("chart-container");
 
     if (!chartContainer.classList.contains("hidden")) {
         chartContainer.classList.add("hidden");
     }
-
-    welcome.classList.add("hidden");
-    // slots.classList.remove("hidden");
-    // slotMachine.init();
-    // slotMachine.spin();
-    // slotMachine.slide();
     
     canvasObj.temp.chart.destroy()
     canvasObj.precip.chart.destroy()
@@ -85,8 +75,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     canvasObj.daylight.chart.destroy()
     
     const data = await DATA.getAllWeatherMetrics(options, zipCodeArr);
-    // await new Promise(r => setTimeout(r, 3000));
-    // console.log(data);
+
     canvasObj.temp.datasets = DATA.createTempChartData(data);
     canvasObj.precip.datasets = DATA.createPrecipChartData(data);
     canvasObj.sun.datasets = DATA.createSunChartData(data);
@@ -185,6 +174,5 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
         }
     );
 
-    // slots.classList.add("hidden");
     chartContainer.classList.remove("hidden");
 };

@@ -95,7 +95,7 @@ const generateMonthArr = (daysArr) => {
         '12': 'Dec',
     }
 
-    return daysArr.map(el => monthObj[el.slice(5, 7)]);
+    return daysArr.map(el => monthObj[el.slice(5, 7)] + ` '`+ el.slice(2, 4));
 }
 
 const generateWeekArr = (daysArr) => {

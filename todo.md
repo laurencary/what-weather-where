@@ -1,13 +1,9 @@
 # Outstanding Questions/Decisions
 * how to handle gap between historical & forecasts?
 
-!! SOURCES !! 
-
 # To Do
 * styling & layout
-    * legend for rain/snow?
 * add listener to aggregation drop down
-* segmented controls https://codepen.io/S-Maas/pen/NrYvdK
 
 * organize project into clear files
 
