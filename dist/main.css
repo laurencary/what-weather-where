@@ -2,6 +2,168 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Roboto:wght@100;300&display=swap);
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/form.scss ***!
+  \****************************************************************************************************/
+.form-container {
+    margin: 5vh 4vw 5vh 4vw;
+    width: 22vw;
+    height: 80vh;
+    position: fixed;
+    background-color: rgb(161, 214, 231);
+    border-radius: 1.4em;
+}
+
+#selections-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 57%;
+}
+
+.zip-code-input {
+    width: 70%;
+    height: 4vh;
+}
+
+ul {
+    margin-top: 2vh;
+    padding: 0;
+}
+
+#zip-codes-container {
+    height: 37%;
+}
+
+input {
+    border: #04045b solid 0.5px;
+    border-radius: 2em;
+    text-align: center;
+}
+
+option {
+    color: #04045b;
+}
+
+#form-button,
+#add-zip {
+    background-color: #04045b !important;
+    border-radius: 2em;
+    color: #EDF2FB;
+    height: 4vh;
+}
+
+.delete-button {
+    background-color: #04045b !important;
+    border-radius: 2em;
+    color: #EDF2FB;
+    height: 3vh;
+    font-size: 60%;
+}
+
+.zip-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    align-items: center;
+    border-radius: 2em;
+    height: 4vh;
+    margin: 0 2vw 1vh 2vw;
+}
+
+#select-container {
+    border-radius: 2em;
+    display: flex;
+    overflow: hidden;
+    background: white;
+    border: 0.5px solid #04045b;
+    justify-content: flex-end;
+    height: 4vh;
+}
+
+.select-box {
+    border: 0px;
+    outline: none;
+    text-align: center;
+    display: block;
+    width: 20vw;
+    height: 4vh;
+}
+
+
+.date-input {
+    display: block;
+    width: 100%;
+    height: 4vh;
+}
+
+#zip-input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.units {
+    display: flex;
+    justify-content: space-between;
+}
+
+li:nth-child(1) {
+    background-color: #FF9AA2;
+}
+
+li:nth-child(2) {
+    background-color: #FFDAC1;
+}
+
+li:nth-child(3) {
+    background-color: #B5EAD7;
+}
+
+li:nth-child(4) {
+    background-color: #a5b2e6;
+}
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/slot-machine.scss ***!
+  \************************************************************************************************************/
+#slot-machine {
+    position: relative;
+    left: 34vw;
+    display: flex;
+    margin: 13vh 30vw 4vh 4vw;
+    width: 48vw;
+    height: 66vh;
+    background-image:linear-gradient(rgb(208, 173, 234),rgb(227, 207, 242),rgb(197, 146, 236),rgb(208, 173, 234));
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid orange;
+    border-radius: 2em;
+}
+
+.doors {
+    display: flex;
+}
+
+.door {
+    background-image: linear-gradient(antiquewhite, white, antiquewhite);
+    width: 12vw;
+    height: 30vh;
+    overflow: hidden;
+    border-radius: 2em;   
+    margin-left: 0.6em;
+    margin-right: 0.6em;
+}
+
+.boxes {
+    transition: transform 1s ease-in-out;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
 /*!*****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
   \*****************************************************************************************************************************************/
@@ -72,22 +234,6 @@ aside {
   padding: 3vh 2vw 3vh 2vw;
 }
 
-.form-container {
-  margin: 5vh 4vw 5vh 4vw;
-  width: 22vw;
-  height: 80vh;
-  position: fixed;
-  background-color: rgb(161, 214, 231);
-  border-radius: 1.4em;
-}
-
-#selections-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 57%;
-}
-
 .content {
   display: flex;
   flex-direction: row;
@@ -96,90 +242,11 @@ aside {
   overflow: hidden;
 }
 
-.chart-container {
+#chart-container {
   position: relative;
   left: 26vw;
   margin: 5vh 4vw 5vh 4vw;
   width: 66vw;
-}
-
-.zip-code-input {
-  width: 70%;
-  height: 4vh;
-}
-
-ul {
-  margin-top: 2vh;
-  padding: 0;
-}
-
-#zip-codes-container {
-  height: 37%;
-}
-
-input {
-  border: #04045b solid 0.5px;
-  border-radius: 2em;
-  text-align: center;
-}
-
-option {
-  color: #04045b;
-}
-
-#form-button, #add-zip {
-  background-color: #04045b !important;
-  border-radius: 2em;
-  color: #EDF2FB;
-  height: 4vh;
-}
-
-.delete-button {
-  background-color: #04045b !important;
-  border-radius: 2em;
-  color: #EDF2FB;
-  height: 3vh;
-  font-size: 60%;
-}
-
-.zip-container {
-  display: flex;
-  justify-content: space-evenly;
-  width: 80%;
-  align-items: center;
-  border-radius: 2em;
-  height: 4vh;
-  margin: 0 2vw 1vh 2vw;
-}
-
-#select-container {
-  border-radius: 2em;
-  display: flex;
-  overflow: hidden;
-  background: white;
-  border: 0.5px solid #04045b;
-  justify-content: flex-end;
-  height: 4vh;
-}
-
-.select-box {
-  border: 0px;
-  outline: none;
-  text-align: center;
-  display: block;
-  width: 20vw;
-  height: 4vh;
-}
-
-.date-input {
-  display: block;
-  width: 100%;
-  height: 4vh;
-}
-
-#zip-input-container {
-  display: flex;
-  justify-content: space-between;
 }
 
 canvas {
@@ -189,36 +256,15 @@ canvas {
   padding: 2vh;
 }
 
-.units {
-  display: flex;
-  justify-content: space-between;
-}
-
-li:nth-child(1) {
-  background-color: #FF9AA2;
-}
-
-li:nth-child(2) {
-  background-color: #FFDAC1;
-}
-
-li:nth-child(3) {
-  background-color: #B5EAD7;
-}
-
-li:nth-child(4) {
-  background-color: #a5b2e6;
-}
-
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 p {
   font-size: 20px;
   position: relative;
-  left: 26vw;
-  margin: 15vh 30vw 4vh 4vw;
+  left: 30vw;
+  margin: 15vh 38vw 4vh 4vw;
   text-align: justify;
   overflow: auto;
 }

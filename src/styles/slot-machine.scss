@@ -1,0 +1,39 @@
+#slot-machine {
+    position: relative;
+    left: 34vw;
+    display: flex;
+    margin: 13vh 30vw 4vh 4vw;
+    width: 48vw;
+    height: 66vh;
+    background-image:linear-gradient(rgb(208, 173, 234),rgb(227, 207, 242),rgb(197, 146, 236),rgb(208, 173, 234));
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid orange;
+    border-radius: 2em;
+}
+
+.doors {
+    display: flex;
+}
+
+.door {
+    background-image: linear-gradient(antiquewhite, white, antiquewhite);
+    width: 12vw;
+    height: 30vh;
+    overflow: hidden;
+    border-radius: 2em;   
+    margin-left: 0.6em;
+    margin-right: 0.6em;
+}
+
+.boxes {
+    transition: transform 1s ease-in-out;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}

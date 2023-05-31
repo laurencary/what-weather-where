@@ -99,8 +99,11 @@ const updateToAggData = (timeArr, locArr) => {
     locArr["weather"]["rain_sum"] = rain;
     locArr["weather"]["sunrise"] = sunrise;
     locArr["weather"]["sunset"] = sunset;
-    locArr["weather"]["daylight"] = daylight;
+    locArr["weather"]["daylight"] = daylight.map(n => n < 0 ? 23.99 : n);
     locArr["weather"]["time"] = time;
+
+    console.log(maxTemp);
+    console.log(time);
 
     return locArr;
 

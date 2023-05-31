@@ -1,6 +1,6 @@
 import { DATA } from "./dataManipulation"
 import Chart from 'chart.js/auto'
-
+import { slotMachine } from "./slotMachine";
 export * as HANDLERS from "./handlers";
 
 export const addZipCode = (zipCodeInput) => {
@@ -65,6 +65,17 @@ export const getInputs = () => {
 }
 
 export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
+    const welcome = document.getElementById("welcome");
+    const slots = document.getElementById("slot-machine");
+    const chartContainer = document.getElementById("chart-container");
+
+    if (!chartContainer.classList.contains("hidden")) {
+        chartContainer.classList.add("hidden");
+    }
+
+    welcome.classList.add("hidden");
+    slots.classList.remove("hidden");
+
     canvasObj.temp.chart.destroy()
     canvasObj.precip.chart.destroy()
     canvasObj.sun.chart.destroy()
@@ -169,4 +180,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
             }
         }
     );
+
+    slots.classList.add("hidden");
+    chartContainer.classList.remove("hidden");
 };
