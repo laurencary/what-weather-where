@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
             window.alert("Please enter at least one zip code.")
         } else {
             // const slots = document.getElementById("slot-machine");
-            // const welcome = document.getElementById("welcome");
-            // welcome.classList.add("hidden");
+            const welcome = document.getElementById("welcome");
+            welcome.classList.add("hidden");
             // init();
             // slots.classList.remove("hidden");
             // spin();
