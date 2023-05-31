@@ -45,7 +45,7 @@ export const appendZipCodeToLocationList = (newZip) => {
 }
 
 export const getArrayOfZipCodes = () => {
-    const liZips = document.querySelectorAll('li');
+    const liZips = document.querySelectorAll('.zip-container');
     const zipArr = Array.from(liZips).map(liZip => { return liZip.innerText.replace('Delete', '') });
     return zipArr;
 }

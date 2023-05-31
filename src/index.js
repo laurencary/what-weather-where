@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.alert("Please enter at least one zip code.")
         } else {
             HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event)
-            // call slot machine
         }
     });
 

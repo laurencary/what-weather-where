@@ -27,8 +27,6 @@ This project will be implemented with the following technologies:
 * Convert zip codes into coordinates using the Open-Mateo ``` Geocoding API ``` [link](https://open-meteo.com/en/docs/geocoding-api)
 * ``` Webpack ``` and ``` Babel ``` to bundle and transpile the source Javascript code.
 * ``` npm ``` to manage project dependencies
-* ```Danfo.js``` to manipulate and process structured data
-
 
 ## Implementation Timeline
 

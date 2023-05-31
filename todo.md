@@ -5,7 +5,6 @@
 
 # To Do
 * styling & layout
-    * hide chart names when no chart
     * legend for rain/snow?
 * add listener to aggregation drop down
 * segmented controls https://codepen.io/S-Maas/pen/NrYvdK
@@ -18,6 +17,5 @@
 * current forecast view for multiple locations
 * auto complete search options
 * international data??
-* stacked bar char for rain & snow instead of percipitation
 
 sun source:
