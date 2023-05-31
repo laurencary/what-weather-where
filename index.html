@@ -35,19 +35,19 @@
         <div class="form-container">
             <aside id="weather-form">
             <div id="zip-container">
-                <label>Choose Locations: </label>
+                <label>Choose up to 4 Locations: </label>
                 <div id="enter-zip-container">
                     <input type="text" class="zip-code-input" placeholder="Enter Zip Code...">
                     <button id="add-zip">Add</button>
                 </div>
                 <ul id="location-list"></ul>
             </div>
-                <div id="selections-container">
+                <form id="selections-container">
                     <label>Start Date:
-                        <input type="date" id="start-date-input" class="date-input">
+                        <input type="date" id="start-date-input" class="date-input" required>
                     </label>
                     <label>End Date:
-                        <input type="date" id="end-date-input" class="date-input">
+                        <input type="date" id="end-date-input" class="date-input" required>
                     </label>
 
                     <label>Aggregation: 
@@ -69,8 +69,8 @@
                             Metric</label> 
                         <!-- <div id="radio-background"></div> -->
                     </div>
-                </div>
-                <button id="form-button">Load Weather Metrics</button>
+                    <button id="form-button">Load Weather Metrics</button>
+                </form>
             </aside>
         </div>
         <div class="chart-container">

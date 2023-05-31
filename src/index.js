@@ -33,8 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("form-button")
     form.addEventListener("click", (event) => {
+        event.preventDefault();
         const zipCodeArr = HANDLERS.getArrayOfZipCodes();
         const options = HANDLERS.getInputs();
-        HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event)
+        if (options.startDate > options.endDate) {
+            window.alert("Start date must be before end date.")
+        } else if (zipCodeArr.length === 0) {
+            window.alert("Please enter at least one zip code.")
+        } else {
+            HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event)
+        }
     });
 })

@@ -32,10 +32,6 @@ const aggregateData = (step, locArr) => {
         timeArr = generateMonthArr(locArr[0]['weather']['time']);
     }
 
-    // const dataObj = createDataObj(locArr);
-    // const df = new dfd.DataFrame(dataObj);
-    // df.addColumn('date', Array(locArr.length).fill(timeArr).flat(), { inplace: true }); 
-    // let agg_df = df.groupby(["date","loc_id"]).mean();
     for (let i = 0; i < locArr.length; i++) {
         locArr[i] = updateToAggData(timeArr, locArr[i])
     }
@@ -123,7 +119,7 @@ const generateMonthArr = (daysArr) => {
         '09': 'Sep',
         '10': 'Oct',
         '11': 'Nov',
-        '12': 'Dev',
+        '12': 'Dec',
     }
 
     return daysArr.map(el => monthObj[el.slice(5, 7)]);

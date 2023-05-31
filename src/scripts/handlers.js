@@ -10,7 +10,7 @@ export const addZipCode = (zipCodeInput) => {
     var reg = new RegExp('^[0-9]+$');
     checksArr.push(!reg.test(newZip));
     if (checksArr.some(e => e === true)) {
-        window.alert("That is not a valid zip code");
+        window.alert(`${newZip} is not a valid zip code`);
     } else {
         appendZipCodeToLocationList(newZip);
     }
