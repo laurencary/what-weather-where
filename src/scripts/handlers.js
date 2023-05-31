@@ -1,6 +1,5 @@
 import { DATA } from "./dataManipulation"
 import Chart from 'chart.js/auto'
-import { slotMachine } from "./slotMachine";
 export * as HANDLERS from "./handlers";
 
 export const addZipCode = (zipCodeInput) => {
