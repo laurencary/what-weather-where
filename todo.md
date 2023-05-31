@@ -1,13 +1,14 @@
 # Outstanding Questions/Decisions
 * how to handle gap between historical & forecasts?
-* Max number of cities to be viewed at a time: 4
 
 # To Do
 * Data
     * handle null data 
     * error handling
+        * api doesn't have weather
+        * form isn't filled out fully
+        * make two diff forms? one for zips one for other stuff so we can use the required functionality
 * styling & layout
-    * patternly for rain and snow https://github.com/ashiguruma/patternomaly
     * hide chart names when no chart
     * chart colors
     * own legend? fix legend

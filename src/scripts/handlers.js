@@ -21,20 +21,26 @@ export const addZipCode = (zipCodeInput) => {
 
 export const appendZipCodeToLocationList = (newZip) => {
     const zipList = document.getElementById("location-list");
-    const li = document.createElement("li");
-    li.innerText = newZip;
-    const btn = document.createElement("button");
-    btn.innerText = 'Delete';
-    btn.classList.add("delete-button");
-    li.appendChild(btn);
-    li.classList.add('zip-container');
-    zipList.appendChild(li);
-
-    const deleteBtns = document.getElementsByClassName("delete-button");
-    for (const item of deleteBtns) {
-        item.addEventListener("click", e => {
-            e.target.parentNode.remove();
-        });
+    const liEls = document.getElementsByClassName("zip-container");
+    if (liEls.length < 4) {
+        const li = document.createElement("li");
+        li.innerText = newZip;
+        const btn = document.createElement("button");
+        btn.innerText = 'Delete';
+        btn.classList.add("delete-button");
+        li.appendChild(btn);
+        li.classList.add('zip-container');
+        // li.classList.add(`zip_${liEls.length + 1}`);
+        zipList.appendChild(li);
+        
+        const deleteBtns = document.getElementsByClassName("delete-button");
+        for (const item of deleteBtns) {
+            item.addEventListener("click", e => {
+                e.target.parentNode.remove();
+            });
+        }
+    } else {
+        window.alert("You can only view up to four locations at a time.")
     }
 }
 

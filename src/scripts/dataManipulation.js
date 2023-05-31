@@ -1,23 +1,23 @@
-import * as dfd from "danfojs"
+// import * as dfd from "danfojs"
 import { weatherAPI } from './openMateoClient'
 export * as DATA from "./dataManipulation";
 import * as pattern from "patternomaly"
 
-const COLORS = [["#895F8F80", "#966B9D80"],
-                ["#C1747480", "#C9868680"],
-                ["#f0ab6980", "#F2B88080"],
-                ["#e0c0a980", "#E7CEBC80"]
-            ]
+const COLORS = [["#FF9AA2", "#FF9AA295"],
+    ["#FFDAC1", "#FFDAC195"],
+    ["#B5EAD7", "#B5EAD795"],
+    ["#C7CEEA", "#C7CEEA95"]
+]
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
-    let locArr = [];
-    for (const zipCode of zipCodeArr) {
-            const locMetrics = await getLocationMetrics(options, zipCode);
-            locArr.push(locMetrics);
-    }
-    console.log(locArr);
-    // let locArr = sampleArray;
+    // let locArr = [];
+    // for (const zipCode of zipCodeArr) {
+    //         const locMetrics = await getLocationMetrics(options, zipCode);
+    //         locArr.push(locMetrics);
+    // }
+    // console.log(locArr);
+    let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
     }
@@ -32,31 +32,62 @@ const aggregateData = (step, locArr) => {
         timeArr = generateMonthArr(locArr[0]['weather']['time']);
     }
 
-    const dataObj = createDataObj(locArr);
-    const df = new dfd.DataFrame(dataObj);
-    df.addColumn('date', Array(locArr.length).fill(timeArr).flat(), { inplace: true }); 
-    let agg_df = df.groupby(["date","loc_id"]).mean();
-
-    locArr = updateToAggData(agg_df, locArr)
-    return locArr;
-}
-
-const updateToAggData = (agg_df, locArr) => {
-    for (const loc of locArr) {
-        const id = loc['meta']['id'];
-        let loc_df = agg_df.query(agg_df["loc_id"].eq(id));
-        loc['weather']['time'] = loc_df['date'].values
-        loc['weather']['temperature_2m_max'] = loc_df['max_temp_mean'].values
-        loc['weather']['temperature_2m_min'] = loc_df['min_temp_mean'].values
-        loc['weather']['snowfall_sum'] = loc_df['snow_sum_mean'].values
-        loc['weather']['rain_sum'] = loc_df['rain_sum_mean'].values
-        loc['weather']['sunrise'] = loc_df['sunrise_mean'].values
-        loc['weather']['sunset'] = loc_df['sunset_mean'].values
-        loc['weather']['daylight'] = loc_df['daylight_mean'].values
+    // const dataObj = createDataObj(locArr);
+    // const df = new dfd.DataFrame(dataObj);
+    // df.addColumn('date', Array(locArr.length).fill(timeArr).flat(), { inplace: true }); 
+    // let agg_df = df.groupby(["date","loc_id"]).mean();
+    for (let i = 0; i < locArr.length; i++) {
+        locArr[i] = updateToAggData(timeArr, locArr[i])
     }
+    
     return locArr;
 }
 
+const updateToAggData = (timeArr, locArr) => {
+    const maxTemp = [];
+    const minTemp = [];
+    const snow =[];
+    const rain = [];
+    const sunrise = [];
+    const sunset = [];
+    const daylight = [];
+    const time = [];
+    let j = -1;
+
+    for (let i = 0; i < timeArr.length; i++) {
+        if (i === 0 || timeArr[i] !== timeArr[i - 1]) {
+            maxTemp.push(locArr["weather"]["temperature_2m_max"][i])
+            minTemp.push(locArr["weather"]["temperature_2m_min"][i])
+            snow.push(locArr["weather"]["snowfall_sum"][i])
+            rain.push(locArr["weather"]["rain_sum"][i])
+            sunrise.push(locArr["weather"]["sunrise"][i])
+            sunset.push(locArr["weather"]["sunset"][i])
+            daylight.push(locArr["weather"]["daylight"][i])
+            time.push(locArr["weather"]["time"][i])
+            j += 1
+        } else {
+            maxTemp[j] += locArr["weather"]["temperature_2m_max"][i]
+            minTemp[j] += locArr["weather"]["temperature_2m_min"][i]
+            snow[j] += locArr["weather"]["snowfall_sum"][i]
+            rain[j] += locArr["weather"]["rain_sum"][i]
+            sunrise[j] += locArr["weather"]["sunrise"][i]
+            sunset[j] += locArr["weather"]["sunset"][i]
+            daylight[j] += locArr["weather"]["daylight"][i]
+        }
+    }
+
+    locArr["weather"]["temperature_2m_max"] = maxTemp;
+    locArr["weather"]["temperature_2m_min"] = minTemp;
+    locArr["weather"]["snowfall_sum"] = snow;
+    locArr["weather"]["rain_sum"] = rain;
+    locArr["weather"]["sunrise"] = sunrise;
+    locArr["weather"]["sunset"] = sunset;
+    locArr["weather"]["daylight"] = daylight;
+    locArr["weather"]["time"] = time;
+
+    return locArr;
+
+}
 
 const generateMonthArr = (daysArr) => {
     const monthObj = {
@@ -87,30 +118,6 @@ const generateWeekArr = (daysArr) => {
         }
     }
     return weekArr;
-}
-
-const createDataObj = (locArr) => {
-    const dataObj = { 'loc_id': [],
-                        'max_temp': [],
-                        'min_temp': [],
-                        'snow_sum': [],
-                        'rain_sum': [],
-                        'sunrise': [],
-                        'sunset': [],
-                        'daylight': [] 
-                    };
-    for (const loc of locArr) {
-        // dataObj['date'] = dataObj['date'].concat(loc['weather']['time']);
-        dataObj['loc_id'] = dataObj['loc_id'].concat(Array(loc['weather']['time'].length).fill(loc['meta']['id']));
-        dataObj['max_temp'] = dataObj['max_temp'].concat(loc['weather']['temperature_2m_max']);
-        dataObj['min_temp'] = dataObj['min_temp'].concat(loc['weather']['temperature_2m_min']);
-        dataObj['snow_sum'] = dataObj['snow_sum'].concat(loc['weather']['snowfall_sum']);
-        dataObj['rain_sum'] = dataObj['rain_sum'].concat(loc['weather']['rain_sum']);
-        dataObj['sunrise'] = dataObj['sunrise'].concat(loc['weather']['sunrise']);
-        dataObj['sunset'] = dataObj['sunset'].concat(loc['weather']['sunset']);
-        dataObj['daylight'] = dataObj['daylight'].concat(loc['weather']['daylight']);
-    }
-    return dataObj;
 }
 
 
@@ -246,12 +253,14 @@ export const createSunChartData = (locArr) => {
             {
                 label: `${loc["meta"]["name"]} sunrise`,
                 data: loc["weather"]["sunrise"],
-                backgroundColor: COLORS[i][0]
+                backgroundColor: COLORS[i][0],
+                borderColor: COLORS[i][1]
             },
             {
                 label: `${loc["meta"]["name"]} sunset`,
                 data: loc["weather"]["sunset"],
-                backgroundColor: COLORS[i][0]
+                backgroundColor: COLORS[i][0],
+                borderColor: COLORS[i][1]
             }
         ])
         i += 1;
