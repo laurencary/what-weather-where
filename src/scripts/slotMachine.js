@@ -100,10 +100,16 @@ export async function slide() {
     const box1 = document.getElementById('box1');
     const box2 = document.getElementById('box2');
     const box3 = document.getElementById('box3');
+    
+    if (!box1.classList.contains('slide')) {
+        box1.classList.toggle('slide');
+        box2.classList.toggle('slide');
+        box3.classList.toggle('slide');
+    }
 
-    box1.classList.toggle('hide');
-    box2.classList.toggle('hide');
-    box3.classList.toggle('hide');
+    box1.classList.add('slide');
+    box2.classList.add('slide');
+    box3.classList.add('slide');
 } 
 
 function getRandomInt(min, max) {

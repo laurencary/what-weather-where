@@ -104,7 +104,9 @@ option {
 
 .units {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
+
 }
 
 .zip-container:nth-child(1) {
@@ -127,6 +129,22 @@ button:hover,
 #form-button:hover,
 #add-zip:hover {
     background-color: rgb(29, 29, 195) !important;
+}
+
+.btn {
+    background-color: white;
+    color: #04045b;
+    border-color: #04045b;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #0a5082 !important;
+    border: 1px solid white;
+}
+
+.active {
+    background-color: #04045b;
 }
 /*!************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/slot-machine.scss ***!
@@ -160,16 +178,44 @@ button:hover,
     margin-right: 0.6em;
 }
 
-.boxes {
-    transition: transform 1s ease-in-out;
-}
 
 .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 3rem;
+    position: relative;
+    text-align: center;
+    margin-top: -8vh;
 }
+
+.box:hover {
+    transition: margin-top linear 1s;
+    margin-top: 20vh;
+}
+
+.animate-slot {
+    position: relative;
+    -webkit-animation-name: animateslot;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animateslot;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes animateslot {
+    from { top:-100px; opacity: 0 } 
+    to { top:0; opacity: 1 } 
+}
+@keyframes animateslot {
+    from {
+        top: -100px;
+        opacity: 0
+    }
+
+    to {
+        top: 0px;
+        opacity: 1
+    }
+}
+
+
 /*!*****************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
   \*****************************************************************************************************************************************/

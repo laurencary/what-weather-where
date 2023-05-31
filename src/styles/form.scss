@@ -97,7 +97,9 @@ option {
 
 .units {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    align-items: center;
+
 }
 
 .zip-container:nth-child(1) {
@@ -120,4 +122,20 @@ button:hover,
 #form-button:hover,
 #add-zip:hover {
     background-color: rgb(29, 29, 195) !important;
+}
+
+.btn {
+    background-color: white;
+    color: #04045b;
+    border-color: #04045b;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #0a5082 !important;
+    border: 1px solid white;
+}
+
+.active {
+    background-color: #04045b;
 }

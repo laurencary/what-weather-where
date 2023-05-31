@@ -74,10 +74,10 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     }
 
     welcome.classList.add("hidden");
-    slots.classList.remove("hidden");
+    // slots.classList.remove("hidden");
     // slotMachine.init();
     // slotMachine.spin();
-    slotMachine.slide();
+    // slotMachine.slide();
     
     canvasObj.temp.chart.destroy()
     canvasObj.precip.chart.destroy()
@@ -85,7 +85,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     canvasObj.daylight.chart.destroy()
     
     const data = await DATA.getAllWeatherMetrics(options, zipCodeArr);
-    await new Promise(r => setTimeout(r, 3000));
+    // await new Promise(r => setTimeout(r, 3000));
     // console.log(data);
     canvasObj.temp.datasets = DATA.createTempChartData(data);
     canvasObj.precip.datasets = DATA.createPrecipChartData(data);
@@ -185,6 +185,6 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
         }
     );
 
-    slots.classList.add("hidden");
+    // slots.classList.add("hidden");
     chartContainer.classList.remove("hidden");
 };

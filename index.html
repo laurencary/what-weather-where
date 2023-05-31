@@ -59,14 +59,17 @@
                             </select>
                         </div>
                     </label>
-                    <div class="units">
+                    <div class="units" role="group">
                         <label>Units:</label>
+                        <!-- <button type="button" class="btn btn-outline-primary" aria-pressed="true">Imperial</button>
+                        <button type="button" class="btn btn-outline-primary">Metric</button> -->
                         <label for="imperial" class="radio-labels">
                             <input type="radio" name="metrics" id="imperial-input" class="radio-input" checked>
                             Imperial</label> 
                         <label for="metric" class="radio-labels">
                             <input type="radio" name="metrics" id="metric-input" class="radio-input">
                             Metric</label> 
+                        
                         <!-- <div id="radio-background"></div> -->
                     </div>
                     <button id="form-button">Load Weather Metrics</button>
@@ -95,6 +98,7 @@
                     <li>Sun Icon: <a href="https://www.iconfinder.com/iconsets/tiny-weather-1">The Tiny Weather set</a></li>
             </footer>
         </div>
+        <!-- <p id="welcome" class="hidden"> -->
         <p id="welcome">
             Welcome to a place where we love weather and data! You can use this 
             website to view historical data for up to four locations at a time. 
@@ -104,17 +108,18 @@
             where and when you want your next vacation. 
         </p>
         <div id="slot-machine" class="hidden">
+        <!-- <div id="slot-machine"> -->
             <div class="doors">
-                <div class="door">
-                    <div class="box" id="box1" class="hide">⛈️</div>
+                <div class="door" id="door1">
+                    <div class="box" id="box1" class="hidden">⛈️</div>
                 </div>
 
-                <div class="door">
-                    <div class="box" id="box2" class="hide">🌈</div>
+                <div class="door" id="door2">
+                    <div class="box" id="box2" class="hidden">🌈</div>
                 </div>
 
-                <div class="door">
-                    <div class="box" id="box3" class="hide">🌤️</div>
+                <div class="door" id="door3">
+                    <div class="box" id="box3" class="hidden">🌤️</div>
                 </div>
             </div>
         </div>

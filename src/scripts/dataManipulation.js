@@ -11,13 +11,13 @@ const COLORS = [["#FF9AA2", "#FF9AA295"],
 
 
 export async function getAllWeatherMetrics(options, zipCodeArr) {
-    // let locArr = [];
-    // for (const zipCode of zipCodeArr) {
-    //         const locMetrics = await getLocationMetrics(options, zipCode);
-    //         locArr.push(locMetrics);
-    // }
+    let locArr = [];
+    for (const zipCode of zipCodeArr) {
+            const locMetrics = await getLocationMetrics(options, zipCode);
+            locArr.push(locMetrics);
+    }
     // console.log(locArr);
-    let locArr = sampleArray;
+    // let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
     }
@@ -33,6 +33,15 @@ const aggregateData = (step, locArr) => {
     }
 
     for (let i = 0; i < locArr.length; i++) {
+        locArr[i]["weather"]["temperature_2m_max"] = updateToAggData(timeArr, locArr[i]["weather"]["temperature_2m_max"]);
+        locArr[i]["weather"]["temperature_2m_min"] = updateToAggData(timeArr, locArr[i]["weather"]["temperature_2m_min"]);
+        locArr[i]["weather"]["snowfall_sum"] = updateToAggData(timeArr, locArr[i]["weather"]["snowfall_sum"]);
+        locArr[i]["weather"]["rain_sum"] = updateToAggData(timeArr, locArr[i]["weather"]["rain_sum"]);
+        locArr[i]["weather"]["sunrise"] = updateToAggData(timeArr, locArr[i]["weather"]["sunrise"]);
+        locArr[i]["weather"]["sunset"] = updateToAggData(timeArr, locArr[i]["weather"]["sunset"]);
+        locArr[i]["weather"]["daylight"] = updateToAggData(timeArr, locArr[i]["weather"]["daylight"]);
+        locArr[i]["weather"]["time"] = updateToAggData(timeArr, locArr[i]["weather"]["time"]);
+        
         locArr[i] = updateToAggData(timeArr, locArr[i])
     }
     

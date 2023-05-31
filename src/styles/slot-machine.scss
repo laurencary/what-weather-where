@@ -27,18 +27,40 @@
     margin-right: 0.6em;
 }
 
-// .boxes {
-//     transition: transform 1s ease-in-out;
-// }
 
 .box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 3rem;
-    transition: all 1s ease-in-out;
+    position: relative;
+    text-align: center;
+    margin-top: -8vh;
 }
 
-.hide {
-    height: 0;
+.box:hover {
+    transition: margin-top linear 1s;
+    margin-top: 20vh;
 }
+
+.animate-slot {
+    position: relative;
+    -webkit-animation-name: animateslot;
+    -webkit-animation-duration: 0.5s;
+    animation-name: animateslot;
+    animation-duration: 0.5s;
+}
+
+@-webkit-keyframes animateslot {
+    from { top:-100px; opacity: 0 } 
+    to { top:0; opacity: 1 } 
+}
+@keyframes animateslot {
+    from {
+        top: -100px;
+        opacity: 0
+    }
+
+    to {
+        top: 0px;
+        opacity: 1
+    }
+}
+
