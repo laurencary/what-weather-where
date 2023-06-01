@@ -61,13 +61,14 @@ export const getInputs = () => {
     return options;
 }
 
-export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
+export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {  
+    const welcome = document.getElementById("welcome");
+    const loader = document.getElementById("loader");
     const chartContainer = document.getElementById("chart-container");
 
-    if (!chartContainer.classList.contains("hidden")) {
-        chartContainer.classList.add("hidden");
-    }
-    
+    welcome.classList.add("hidden");
+    loader.classList.remove("hidden");
+
     canvasObj.temp.chart.destroy()
     canvasObj.precip.chart.destroy()
     canvasObj.sun.chart.destroy()
@@ -172,6 +173,6 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
             }
         }
     );
-
+    loader.classList.add("hidden");
     chartContainer.classList.remove("hidden");
 };

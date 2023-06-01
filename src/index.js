@@ -36,6 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
         event.preventDefault();
         const zipCodeArr = HANDLERS.getArrayOfZipCodes();
         const options = HANDLERS.getInputs();
+
+        const chartContainer = document.getElementById("chart-container");
+
+        if (!chartContainer.classList.contains("hidden")) {
+            chartContainer.classList.add("hidden");
+        }
+
         if (options.startDate > options.endDate) {
             window.alert("Start date must be before end date.")
         } else if (zipCodeArr.length === 0 && zipCodeInput.value !== '') {
@@ -44,8 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (zipCodeArr.length === 0) {
             window.alert("Please enter at least one zip code.")
         } else {
-            const welcome = document.getElementById("welcome");
-            welcome.classList.add("hidden");
             HANDLERS.loadWeatherCharts(zipCodeArr, options, canvasObj, event)
         }
     });

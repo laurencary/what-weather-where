@@ -16,7 +16,7 @@ export async function getAllWeatherMetrics(options, zipCodeArr) {
             const locMetrics = await getLocationMetrics(options, zipCode);
             locArr.push(locMetrics);
     }
-    // console.log(locArr);
+    await new Promise(r => setTimeout(r, 4000));
     // let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);

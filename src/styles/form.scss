@@ -5,6 +5,7 @@
     position: fixed;
     background-color: rgb(161, 214, 231);
     border-radius: 1.4em;
+    box-shadow: 0 5px 2px -2px gray;
 }
 
 #selections-container {
@@ -62,6 +63,7 @@ option {
     border-radius: 2em;
     height: 4vh;
     margin: 0 2vw 1vh 1vw;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
 #select-container {
@@ -121,7 +123,9 @@ option {
 button:hover,
 #form-button:hover,
 #add-zip:hover {
-    background-color: rgb(29, 29, 195) !important;
+    background-color: rgb(224, 234, 231) !important;
+    color:#04045b;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
 .btn {

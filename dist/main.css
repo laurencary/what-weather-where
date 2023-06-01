@@ -1,4 +1,193 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Roboto:wght@100;300&display=swap);
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/load.scss ***!
+  \****************************************************************************************************/
+.weather-icons {
+    height: 10vh;
+    width: 10vh;
+    margin: auto;
+}
+
+#loader {
+    padding-top: 30vh;
+    padding-left: 7vw;
+}
+
+#cloud {
+    animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite;
+    -moz-animation: bounce 2s infinite;
+    -o-animation: bounce 2s infinite;
+}
+
+#lightning {
+    animation-delay: 300ms;
+    animation: bounce 2s infinite;
+    -webkit-animation: bounce 2s infinite 200ms;
+    -moz-animation-delay: 300ms;
+    -moz-animation: bounce 2s infinite;
+    -o-animation-delay: 300ms;
+    -o-animation: bounce 2s infinite;
+}
+
+#partly {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 400ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+
+#rain {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 600ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+#sun {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 800ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+#cloud-rain {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 1000ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+#snow {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 1200ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+#cloud-strike {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 1400ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+#rainbow {
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 1600ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+
+#cloud-snow{
+        animation-delay: 300ms;
+        animation: bounce 2s infinite;
+        -webkit-animation: bounce 2s infinite 1800ms;
+        -moz-animation-delay: 300ms;
+        -moz-animation: bounce 2s infinite;
+        -o-animation-delay: 300ms;
+        -o-animation: bounce 2s infinite;
+    }
+
+
+
+@-webkit-keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        -webkit-transform: translateY(0);
+    }
+
+    40% {
+        -webkit-transform: translateY(-30px);
+    }
+
+    60% {
+        -webkit-transform: translateY(-3px);
+    }
+}
+
+@-moz-keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        -moz-transform: translateY(0);
+    }
+
+    40% {
+        -moz-transform: translateY(-30px);
+    }
+
+    60% {
+        -moz-transform: translateY(-3px);
+    }
+}
+
+@-o-keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        -o-transform: translateY(0);
+    }
+
+    40% {
+        -o-transform: translateY(-30px);
+    }
+
+    60% {
+        -o-transform: translateY(-3px);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-30px);
+    }
+
+    60% {
+        transform: translateY(-3px);
+    }
+}
+/*!****************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./src/styles/form.scss ***!
+  \****************************************************************************************************/
 .form-container {
     margin: 5vh 4vw 5vh 4vw;
     width: 22vw;
@@ -6,6 +195,7 @@
     position: fixed;
     background-color: rgb(161, 214, 231);
     border-radius: 1.4em;
+    box-shadow: 0 5px 2px -2px gray;
 }
 
 #selections-container {
@@ -63,6 +253,7 @@ option {
     border-radius: 2em;
     height: 4vh;
     margin: 0 2vw 1vh 1vw;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
 #select-container {
@@ -122,7 +313,9 @@ option {
 button:hover,
 #form-button:hover,
 #add-zip:hover {
-    background-color: rgb(29, 29, 195) !important;
+    background-color: rgb(224, 234, 231) !important;
+    color:#04045b;
+    box-shadow: 0 4px 2px -2px gray;
 }
 
 .btn {
@@ -140,6 +333,128 @@ button:hover,
 .active {
     background-color: #04045b;
 }
-body{background-image:linear-gradient(to bottom, lightblue, white);background-attachment:fixed;display:flex;flex-direction:column;font-family:"Roboto";color:#04045b !important}nav{position:fixed;width:100vw;height:10vh;background-color:#84cbe3;opacity:20;display:flex;justify-content:space-between;z-index:1}.logo,.socials{height:10vh;display:flex;flex-direction:row;align-items:center}.nav-anchors{height:10vh;display:flex;align-items:center}img{display:inline;max-height:70%}.logo-img{max-height:80%;margin-left:4vw}#linkedin{margin-right:4vw;margin-left:2vw}h1{margin-bottom:0vh;margin-left:.4vw;font-size:150%;font-weight:bolder}h2{text-align:center;font-size:140}aside{display:flex;flex-direction:column;justify-content:space-between;height:100%;padding:3vh 2vw 3vh 2vw}.content{display:flex;flex-direction:row;position:relative;top:10vh;overflow:hidden}#chart-container{position:relative;left:26vw;margin:5vh 4vw 5vh 4vw;width:66vw}canvas{background-color:#fff;margin-bottom:3vh;border-radius:1.4em;padding:2vh}.hidden{display:none !important}p{font-size:20px;position:relative;left:30vw;margin:15vh 38vw 4vh 4vw;text-align:justify;overflow:auto}img.legend{height:4vh}h3{text-align:center;background-color:#fff;margin-bottom:-6vh;padding-top:1vh;padding-bottom:3vh;border-top-left-radius:1.4em;border-top-right-radius:1.4em}
 
-/*# sourceMappingURL=main.css.map*/
+/*!*****************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss (1) ***!
+  \*****************************************************************************************************************************************/
+body {
+  background-image: linear-gradient(to bottom, lightblue, white);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto";
+  color: #04045b !important;
+}
+
+nav {
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  background-color: rgb(132, 203, 227);
+  opacity: 20;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.logo, .socials {
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.socials-img:hover {
+  max-height: 80%;
+}
+
+.nav-anchors {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+}
+
+.socials-img {
+  display: inline;
+  max-height: 70%;
+}
+
+.logo-img {
+  max-height: 80%;
+  margin-left: 4vw;
+}
+
+#linkedin {
+  margin-right: 4vw;
+  margin-left: 2vw;
+}
+
+h1 {
+  margin-bottom: 0vh;
+  margin-left: 0.4vw;
+  font-size: 150%;
+  font-weight: bolder;
+}
+
+h2 {
+  text-align: center;
+  font-size: 140;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 3vh 2vw 3vh 2vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 10vh;
+  overflow: hidden;
+}
+
+#chart-container, #loader {
+  position: relative;
+  left: 26vw;
+  margin: 5vh 4vw 5vh 4vw;
+  width: 66vw;
+}
+
+canvas {
+  background-color: white;
+  margin-bottom: 3vh;
+  border-radius: 1.4em;
+  padding: 2vh;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.hidden {
+  display: none !important;
+}
+
+p {
+  font-size: 20px;
+  position: relative;
+  left: 30vw;
+  margin: 15vh 38vw 4vh 4vw;
+  text-align: justify;
+  overflow: auto;
+}
+
+img.legend {
+  height: 4vh;
+}
+
+h3 {
+  text-align: center;
+  background-color: white;
+  margin-bottom: -6vh;
+  padding-top: 1vh;
+  padding-bottom: 3vh;
+  border-top-left-radius: 1.4em;
+  border-top-right-radius: 1.4em;
+}
