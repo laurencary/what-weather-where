@@ -111,6 +111,11 @@ const generateWeekArr = (daysArr) => {
 }
 
 
+export function isFutureDate(date) {
+    const today = new Date();
+    return date >= today.toISOString().split('T')[0];
+}
+
 export async function getLocationMetrics(options, zipCode) {
     const coordinates = await weatherAPI.getCoordinates(zipCode);
     const weather = await weatherAPI.getWeatherData(options, coordinates);

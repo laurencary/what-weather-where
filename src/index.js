@@ -1,4 +1,5 @@
 import { HANDLERS } from "./scripts/handlers"
+import { DATA } from "./scripts/dataManipulation"
 import Chart from 'chart.js/auto'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -43,7 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
             chartContainer.classList.add("hidden");
         }
 
-        if (options.startDate > options.endDate) {
+        if (DATA.isFutureDate(options.startDate)) {
+            window.alert("We can only show you historical data. Please select a start date in the past")
+        } else if (options.startDate > options.endDate) {
             window.alert("Start date must be before end date.")
         } else if (zipCodeArr.length === 0 && zipCodeInput.value !== '') {
             HANDLERS.addZipCode(zipCodeInput)
