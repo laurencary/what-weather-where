@@ -44,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
             chartContainer.classList.add("hidden");
         }
 
-        if (DATA.isFutureDate(options.startDate)) {
-            window.alert("We can only show you historical data. Please select a start date in the past")
+        if (DATA.isFutureDate(options.startDate) || DATA.isFutureDate(options.endDate)) {
+            window.alert("We can only show you historical data. Please select dates that are in the past")
         } else if (options.startDate > options.endDate) {
             window.alert("Start date must be before end date.")
         } else if (zipCodeArr.length === 0 && zipCodeInput.value !== '') {
