@@ -16,7 +16,7 @@ export async function getAllWeatherMetrics(options, zipCodeArr) {
             const locMetrics = await getLocationMetrics(options, zipCode);
             locArr.push(locMetrics);
     }
-    await new Promise(r => setTimeout(r, 4000));
+    await new Promise(r => setTimeout(r, 2000));
     // let locArr = sampleArray;
     if (options.xStep !== 'days') {
         locArr = aggregateData(options.xStep, locArr);
@@ -131,9 +131,13 @@ export async function getLocationMetrics(options, zipCode) {
     return data;
 }
 
-export const getPrecipYObj = (datasets) => {
+export const getPrecipYObj = (datasets, imperialInd) => {
     const obj = {
         stacked: true,
+        title: {
+            display: true,
+            text: imperialInd ? 'Inches' : 'Millimeters'
+        }
     }
 
     if (includesSnow(datasets)){

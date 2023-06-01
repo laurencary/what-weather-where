@@ -81,7 +81,7 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
     canvasObj.sun.datasets = DATA.createSunChartData(data);
     canvasObj.daylight.datasets = DATA.createDaylightChartData(data);
 
-    const precipYScaleObj = DATA.getPrecipYObj(canvasObj.precip.datasets);
+    const precipYScaleObj = DATA.getPrecipYObj(canvasObj.precip.datasets, options.imperialInd);
 
     // tempChart
     canvasObj.temp.chart = new Chart(
@@ -96,6 +96,14 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                 plugins: {
                     legend: {
                         display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: options.imperialInd ? 'Fahrenheit' : 'Celsius'
+                        }
                     }
                 }
             }
@@ -144,6 +152,10 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                         min: 0,
                         ticks: {
                             stepSize: 4,
+                        },
+                        title: {
+                            display: true,
+                            text: 'Hour'
                         }
                     }
                 },
@@ -168,6 +180,14 @@ export async function loadWeatherCharts(zipCodeArr, options, canvasObj) {
                 plugins: {
                     legend: {
                         display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: "Hours"
+                        }
                     }
                 }
             }
