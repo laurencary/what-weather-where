@@ -202,7 +202,7 @@ export const createTempChartData = (locArr) => {
     for (const loc of locArr) {
         datasets = datasets.concat([
             {
-                label: "false",
+                label: loc["meta"]["name"],
                 // backgroundColor: "#4787b5",
                 showLine: false,
                 pointStyle: false,
