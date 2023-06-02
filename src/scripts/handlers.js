@@ -43,7 +43,7 @@ export const appendZipCodeToLocationList = (newZip) => {
 
 export const getArrayOfZipCodes = () => {
     const liZips = document.querySelectorAll('.zip-container');
-    const zipArr = Array.from(liZips).map(liZip => { return liZip.innerText.slice(0, 6) });
+    const zipArr = Array.from(liZips).map(liZip => { return liZip.innerText.slice(0, 5) });
     return zipArr;
 }
 
