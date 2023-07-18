@@ -1,5 +1,8 @@
 # What Weather Where 
 
+[Go to the website](https://laurencary.github.io/what-weather-where/)
+
+
 ## Background
 If you're trying to plan you're next big adventure and don't want to find yourself sitting in the rain, freezing your butt off, or cramping from dehydration in sweltering heat, What Weather Where is here to help. This app allows you to look at historical weather metrics for up to four locations in the Unites States at a time
 
