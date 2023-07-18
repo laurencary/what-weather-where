@@ -17,6 +17,7 @@ If you're trying to plan you're next big adventure and don't want to find yourse
 
 ## Technologies
 This project will be implemented with the following technologies:
+* Vanilla JavaScript
 * Weather data is populated using the Open-Mateo ```Historical Weather API``` [link](https://open-meteo.com/en/docs/historical-weather-api)
 * Convert zip codes into coordinates using the Open-Mateo ``` Geocoding API ``` [link](https://open-meteo.com/en/docs/geocoding-api)
 * ``` Webpack ``` and ``` Babel ``` to bundle and transpile the source Javascript code.
